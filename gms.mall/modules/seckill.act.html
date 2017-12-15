@@ -1,0 +1,381 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class="icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+            <div class='cover'>
+                <sep-swiper class='swiper' :pagination='true' v-for="item in models.topImage">
+                    <div class='swiper-slide'>
+                        <div class='category'>
+                            <img :src='item.imgUrl' width='100%'/>
+                        </div>
+                    </div>
+                </sep-swiper>
+            </div>
+
+            <div class="layout top">
+                <ul>
+                    <li v-if='1 == start'>
+                        <div class="flexbox time">
+                            <div class="l">
+                                <a class="button ll" v-click='m_prev'><i class="icon-back ii"></i></a>
+                            </div>
+                            <div class="c primary tiemlist">
+                                <sep-radios>
+                                    <ul>
+                                        <li>
+                                            <div class='button'>
+                                                <input value='1'/>
+                                                <small>
+                                                    10: 00
+                                                    <p class="fz-small">秒杀进行中</p>
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class='button'>
+                                                <input value='2'/>
+                                                <small>
+                                                    10: 00
+                                                    <p class="fz-small">秒杀进行中</p>
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class='button'>
+                                                <input value='3'/>
+                                                <small>
+                                                    10: 00
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class='button'>
+                                                <input value='4'/>
+                                                <small>
+                                                    10: 00
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class='button'>
+                                                <input value='5'/>
+                                                <small>
+                                                    10: 00
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class='button'>
+                                                <input value='6'/>
+                                                <small>
+                                                    10: 00
+                                                </small>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </sep-radios>
+                            </div>
+                            <div class="r">
+                                <!-- <a class="button tomorrow">
+                                    <img :src='data.tomorrow' width='100%' />
+                                </a> -->
+                            </div>
+                        </div>
+                    </li>
+                    <li v-if='2 == start'>
+                        <div class="flexbox time">
+                            <div class="l">
+                                <!-- <a class="button ll"><i class = "icon-back ii"></i></a> -->
+                            </div>
+                            <div class="c primary tiemlist">
+                                <sep-radios v-model="startTime">
+                                    <ul>
+                                        <li v-for="el in models.timeList">
+                                            <!-- {{el.startTime | date('MM月dd日 hh:mm 开拍')}} -->
+                                            <div class='button'>
+                                                <input :value='el.time'/>
+                                                <small>
+                                                    {{el.time | date('hh:mm')}}
+                                                    <!-- <p class="fz-small">秒杀进行中</p> -->
+                                                </small>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </sep-radios>
+                            </div>
+                            <div class="r">
+                                <a class="button tomorrow" v-click="m_next">
+                                    <img :src='tom' width='100%'/>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class='layout nava '>
+                <ul>
+                    <li>
+                        <div class='item field'>
+                            <div class='content'>
+                                <div class='edit'>
+                                    <sep-checkboxs v-model='classifyId'>
+                                        <div class='button' v-for="el in models.classifyList">
+                                            <input :value='el.id'/>
+                                            <small>
+                                                {{el.classifyName}}
+                                            </small>
+                                        </div>
+                                    </sep-checkboxs>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='item field'>
+                            <div class='content'>
+                                <div class='edit'>
+                                    <sep-radios v-model='priceBetween'>
+                                        <div class='button' v-for='el in models.priceBt'>
+                                            <input :value='el.id'/>
+                                            <small class="fz-small">
+                                                {{el.priceBetween}}
+                                            </small>
+                                        </div>
+                                    </sep-radios>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="layout" v-for="el in case3"> <!--必抢美品-->
+                <ul>
+                    <li>
+                        <div class="button item " >
+                            <div class="boximg" v-if="4 == el.type">
+                                <img :src="el.images" width="100%">
+                            </div>
+                            <div class="content" v-else>
+                                {{el.name}}
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                    </li>
+                    <li v-for="ds in el.skillGoods" @click="m_push(ds)">
+                        <div class="item topalign button link">
+                            <div class="media large">
+                                <img :src="ds.images" width="100%">
+                            </div>
+                            <div class="content">
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l fg-gray singleline">
+                                            {{ds.name}}
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                    <div class="prop">
+                                        <div class="l doubleline">
+                                            {{ds.description}}
+                                        </div>
+                                        <div class="r">
+
+                                        </div>
+                                    </div>
+                                    <div class="prop">
+                                        <div class="l fg-red">
+                                            {{ds.sellingPrice}}元
+                                            <i class="decortion">{{ds.goodsPrice}}元</i>
+                                        </div>
+                                        <div class="r">
+                                            <div class="button mini small red rr">
+                                                马上抢
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="product margin-top-far" v-for="el in case2"> <!--专属推荐-->
+                <div class="boximg" v-if="4 == el.type">
+                    <img :src="el.images" width="100%">
+                </div>
+                <div class="contentitem" v-else>
+                    {{el.name}}
+                </div>
+                <ul>
+                    <li v-for="ds in el.skillGoods">
+                        <div class="button">
+                            <div class="media">
+                                <img :src="ds.images" width="100%">
+                            </div>
+                            <div class="detail">
+                                <em class="name">
+                                    {{ds.name}}
+                                </em>
+                                <div class="other">
+                                    <div class="l">
+                                        <span class="price fg-red">
+                                            <small>
+                                                ￥
+                                            </small>
+                                            {{ds.sellingPrice}}
+                                        </span>
+                                    </div>
+                                    <div class="r">
+                                        <div class="flexbox">
+                                            <small class="fg-gray primary fz-small decortion">
+                                                <!-- 销量1000 -->
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout margin-top-far" v-for="el in case1"> <!--手慢无-->
+                <ul>
+                    <li>
+                        <div class="button item">
+                            <div class="boximg" v-if="4 == el.type">
+                                <img :src="el.images" width="100%">
+                            </div>
+                            <div class="content" v-else>
+                                {{el.name}}
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                    </li>
+                    <li v-for="ds in el.skillGoods" @click="m_push(ds)">
+                        <div class="button item link">
+                            <div class="media large">
+                                <img :src="ds.images" width="100%">
+                            </div>
+                            <div class="content">
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l singleline">
+                                            {{ds.name}}
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l fg-gray">
+                                            {{ds.description}}
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l fg-red">
+                                            {{ds.sellingPrice}}
+                                            <i class="decortion">{{ds.goodsPrice}}元</i>
+                                        </div>
+                                        <div class="r">
+                                            <div class="button mini small red rr">
+                                                马上抢
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout margin-top-far" v-for="el in case4">
+                <ul>
+                    <li>
+                        <div class="button item">
+                            <!-- <i class="bg-red "></i> -->
+                            <div class="boximg" v-if="4 == el.type">
+                                <img :src="el.images" width="100%">
+                            </div>
+
+                            <div class="content" v-else>
+                                {{el.name}}
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                    </li>
+                    <li v-for="ds in el.skillGoods" @click="m_push(ds)">
+                        <div class="button item link">
+                            <div class="media large">
+                                <img :src="ds.images" width="100%">
+                            </div>
+                            <div class="content">
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l singleline">
+                                            {{ds.name}}
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l fg-gray">
+                                            {{ds.description}}
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l fg-red">
+                                            {{ds.sellingPrice}}
+                                            <i class="decortion">{{ds.goodsPrice}}元</i>
+                                        </div>
+                                        <div class="r">
+                                            <div class="button mini small red rr">
+                                                马上抢
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

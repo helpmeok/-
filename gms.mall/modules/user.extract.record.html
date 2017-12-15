@@ -1,0 +1,58 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <div class="layout">
+                <ul>
+                    <li v-for="item in recordList">
+                        <div class="item topalign">
+                            <!--<div class="media large">-->
+                                <!--<i class = 'icon-shalou fg-red'></i>-->
+                            <!--</div>-->
+                            <div class="content">
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l">
+                                            金额：<small class = 'number fz-large'>{{item.amount}}元</small>
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                    <div class="prop">
+                                        <div class="l fz-small fg-gray">
+                                            申请提现时间：{{item.applyTime}}
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                    <div class="prop">
+                                        <div class="l fz-small fg-gray">
+                                            预计完成时间：{{item.preTime}}
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

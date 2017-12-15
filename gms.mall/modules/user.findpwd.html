@@ -1,0 +1,105 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class = "button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll :style="{bottom: '50px'}">
+            <form v-form = 'form'>
+                <div class="layout margin-top-far">
+                    <ul>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <em class="name">
+                                        手机号： 
+                                    </em>
+                                    <div class="edit">
+                                        <input type="text" placeholder="请输入手机号码" v-rules = '{required : true, minlength : 11}' data-minlength-msg = '手机格式不正确' data-required-msg = '请输入手机号码' v-model = 'model.mobile' class="mobile">
+                                    </div>
+                                </div>
+                                <div class="other">
+                                   
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="layout">
+                    <ul>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <em class="name">
+                                        验证码：
+                                    </em>
+                                    <div class="edit">
+                                        <input type="tel" maxlength = '6' placeholder="请输入验证码" v-rules = '{required : true, minlength : 6}' data-minlength-msg = '验证码至少6位' data-required-msg = '请输入验证码' v-model = 'model.smsCode'>
+                                    </div>
+                                </div>
+                                <div class="other">
+                                    <sep-button :loading = 'false' text = '获取验证码' :wtext = 'wtext' class="red medium req-code border-radius-far" v-click = 'm_step1'></sep-button>
+                                </div>
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="layout margin-top-far">
+                    <ul>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <em class="name">
+                                        新密码：
+                                    </em>
+                                    <div class="edit">
+                                        <input type="text" placeholder="请输入新密码" v-rules = '{required : true, minlength : 6}' data-minlength-msg = '新密码至少6位' data-required-msg = '新密码不能为空' v-model = 'model.newPwd1'>
+                                    </div>
+                                </div>
+                                <div class="other">
+                               
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="layout">
+                    <ul>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <em class="name">
+                                        确认新密码：
+                                    </em>
+                                    <div class="edit">
+                                        <input type="text" placeholder="确认新密码" v-rules = '{required : true, minlength : 6}' data-minlength-msg = '新密码至少6位' data-required-msg = '新密码不能为空' v-model = 'model.newPwd2'>
+                                    </div>
+                                </div>
+                                <div class="other">
+                                    
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        <div class = "footer center">
+            <div class = "bg-white">
+                <sep-button class = 'submit save' text = '提交' wtext = '提交中..' v-click="form.m_submit"></sep-button>
+            </div>
+        </div>
+    </div>
+</div>

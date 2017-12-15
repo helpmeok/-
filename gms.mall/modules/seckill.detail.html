@@ -1,0 +1,108 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class="icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+            <div class='images'>
+                <sep-swiper class='swiper' :pagination='true'  :autoplay="3000" v-for="item in detail.images">
+                    <div class='swiper-slide'>
+                        <div class='category'>
+                            <img :src="item" width="100%">
+                        </div>
+                    </div>
+                </sep-swiper>
+            </div>
+            <div class="privilege">
+                <div class="wrap flexbox centeralign">
+                    <p>{{detail.sellingPrice}}<span>元</span><span>{{detail.goodsPrice}}元</span></p>
+                    <p id="colockbox1">距结束<span class="hour">00</span><span class="minute">00</span> <span class="second">00</span></p>
+                </div>
+            </div>
+            <div class="layout">
+                <ul>
+                    <li>
+                        <div class="button item topalign">
+                            <div class="content">
+                                <div class="props" style="position:relative">
+                                    <div class="prop">
+                                        <div class="l doubleline">
+                                            <!--<p>【限时抢购】天然矿物彩名师手绘无量寿佛唐卡挂屏（裱框）</p>-->
+                                            <p>{{name}}</p>
+                                            <!--<p class='desc'>商品尺寸：长30厘米，宽24.5厘米，唐卡长17.3厘米，宽15厘米</p>-->
+                                            <p class='desc'>{{description}}</p>
+                                        </div>
+                                        <div class="r" style="width: 50px">
+                                            <div class="share button text-align-center" slideup='share'>
+                                                <i class="icon-share-dotfill"></i>
+                                                <p class='fz-small fg-gray'>分享</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="prop">
+                                        <div class="l number">
+                                            <h5>限时限量 疯狂抢购</h5>
+                                            <p>证书齐全，官方认证</p>
+                                            <p>15天上手鉴赏期包退</p>
+                                            <p>三轮专家严格把关</p>
+                                            <p>前10分钟付款立减100元</p>
+                                        </div>
+                                        <div class="r">
+                                            <!-- <div class = 'score' >古美分：{{item.scoring}} 分</div> -->
+                                        </div>
+                                    </div>
+                                    <div style="position: absolute;bottom: 10px;right: 10px;width: 150px;height:150px">
+                                        <img :src='dealed_pic_base64' style="width: 100%;height: 100%">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class='tab red margin-top-far'>
+                <div class='wrap'>
+                    <div class='button'>
+                        <div class='item'>
+                            -商品详情-
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<section class='detail' v-if='0 == tab_index' v-for='el in $model.message'>-->
+            <!--<div v-for="item in seckill_detail_desc64">-->
+            <section class='detail'>
+                <div v-for="item in detail.images">
+                    <p class='desc'>
+                        结跏趺坐于莲台之上，红色作为无量寿佛身色的标识，与画中青绿、灰白等颜色结合，营造出优雅大方的艺术效果
+                    </p>
+                    <!--<img style="width: 100%;height: 300px"/>-->
+                    <div class="pic">
+                        <img :src="item" class="swiper-lazy" width="100%">
+                        <div>
+                            <p>恭喜用户：15759562653抢的此件商品</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--</section>-->
+
+            <!--</sep-render>-->
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

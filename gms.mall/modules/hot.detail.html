@@ -1,0 +1,115 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <div class='tab red'>
+            <div class='wrap tbox' v-calc-width>
+                <div class='button' :class = '{l : 1 == status}' v-click = '{method : m_change_tab_type, args : 1}'>
+                    <input type='radio' name='radio' value = '1'  v-model = 'status'/>
+                    <div class='item'>
+                        <small>
+                            古美术公众号
+                        </small>
+                    </div>
+                </div>
+                <div class='button' :class = '{r : 2 == status}' v-click = '{method : m_change_tab_type, args : 2}'>
+                    <input type='radio' name='radio' value="2"  v-model = 'status'/>
+                    <div class='item'>
+                        <small>
+                            古玩知识分享
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <sep-scroll>
+             <section v-if = '1 == status'>
+                    a
+            </section>
+            <section v-if = '2 == status'>
+                <div class="area">
+                    <div class = 'wrap'>
+                        <em>
+                            <small></small> 2017-9-19 <small></small>
+                        </em>
+                        <ul>
+                            <li>
+                                <div class = 'button item'>
+                                    <small>
+                                        她用美色征服法国 伏尔泰等文化巨匠却都很...
+                                    </small>
+                                    <img src = 'http://gms-shop.oss-cn-hangzhou.aliyuncs.com/common/0de0a565ef8643bfb539ea0390bd34b2.jpg' />
+                                </div>
+                                <div class="layout">
+                                    <ul>
+                                        <li>
+                                            <div class="button item link">
+                                                <div class="media large"><img src="http://gms-shop.oss-cn-hangzhou.aliyuncs.com/common/9ad8b7ac6f801ca5920ffe77bd3a65c6.jpg"></div>
+                                                <div class="content">
+                                                    <div class="props">
+                                                        <div class="prop">
+                                                            <div class="l">
+                                                                傅抱石的画为什么一直在涨价？10幅画10.86亿元
+                                                            </div>
+                                                            <div class="r"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="other"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="button item link">
+                                                <div class="media large"><img src="http://gms-shop.oss-cn-hangzhou.aliyuncs.com/common/90_104935_6.jpg"></div>
+                                                <div class="content">
+                                                    <div class="props">
+                                                        <div class="prop">
+                                                            <div class="l">
+                                                                傅抱石的画为什么一直在涨价？10幅画10.86亿元
+                                                            </div>
+                                                            <div class="r"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="other"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="button item link">
+                                                <div class="media large"><img src="http://gms-shop.oss-cn-hangzhou.aliyuncs.com/common/20120109144324964.jpg"></div>
+                                                <div class="content">
+                                                    <div class="props">
+                                                        <div class="prop">
+                                                            <div class="l">
+                                                                傅抱石的画为什么一直在涨价？10幅画10.86亿元
+                                                            </div>
+                                                            <div class="r"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="other"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                
+            </section>
+         </sep-scroll>
+    </div>
+</div>

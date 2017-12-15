@@ -1,0 +1,94 @@
+<form class = "viewbox" v-form = 'form'>
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+   
+    <div class = 'body'>
+        <sep-scroll>
+            <div class="layout">
+                <ul>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                    联系人
+                                </em>
+                                <div class="edit">
+                                    <input v-rules = '{required : true}' data-required-msg = '请输入联系人' v-model = 'form.model.addressee' type="text" placeholder="请输入联系人">
+                                </div>
+                            </div>
+                            <div class="other">
+                                <span class = 'vd-notify' v-html = 'form.msgs.addressee'></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                    联系电话
+                                </em>
+                                <div class="edit">
+                                    <input v-rules = '{required : true, tel : true}' v-model = 'form.model.mobile' type="text" data-required-msg = '请输入联系电话' data-tel-msg = '手机号格式无效' placeholder="请输入联系电话">
+                                </div>
+                            </div>
+                            <div class="other">
+                               <span class = 'vd-notify' v-html = 'form.msgs.mobile'></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field topalign">
+                            <div class="content">
+
+                                <div class="edit">
+                                    <textarea maxlength="200" v-model = 'form.model.addressDetail' v-rules = '{required : true}' data-required-msg = '请填写详情地址' placeholder="详细地址">
+                                    </textarea>
+                                    <span class="counter">
+                                        {{form.model.addressDetail.length}} / 200
+                                        <span class = 'vd-notify' v-html = 'form.msgs.addressDetail'></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                    设为默认
+                                </em>
+                                <div class="edit">
+                                    <div class="button switch">
+                                        <input type="checkbox" name="switch" value = '1' v-model = 'form.model.setDefault'>
+                                        <i>
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="other">
+                               <a v-if = 'form.model.id' class = 'icon-delete button' v-click = 'm_remove'></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class = 'padding-far'>
+                <sep-button v-click = 'form.m_submit' text = '保存' wtext = '请稍后...' class = 'submit default red border-radius-near'></sep-button>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</form>

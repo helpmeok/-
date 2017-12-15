@@ -1,0 +1,40 @@
+.order-confirm .body {
+    bottom: 50px;
+}
+.order-confirm .footer .wrap {
+    background-color: #fff;
+}
+.order-confirm .footer .wrap:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    border-top: 1px solid #eee;
+    content: '';
+}
+.order-confirm .footer .r .button {
+    padding: 15px 25px;
+    font-size: 16px;
+    text-align: center;
+}
+.order-confirm .footer .r .button.submit {
+    background-color: #ee3333;
+    color: #fff;
+}
+.order-confirm .footer .wrap .l {
+    text-align: center;
+}
+.order-confirm .footer .wrap .l .button:after {
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    right: 0;
+    border-left: 1px solid #eee;
+    content: '';
+}
+.order-confirm .footer .wrap .l .button:last-child:after {
+    display: none;
+}
+.order-confirm .footer .l p {
+    margin-left: 15px;
+}

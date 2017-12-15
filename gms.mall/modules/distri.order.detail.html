@@ -1,0 +1,122 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class ="icon-back fg-black"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll >
+            <sep-render>
+                <section slot="entity">
+                    <div class="top">
+                        <sep-text-scroll :text = "$model.tip" icon = "icon-notificationfill" sleep = "1000"></sep-text-scroll>
+                    </div>
+                    <div class="tools splitline">    
+                        <ul>
+                            <li :class="{'on' : $model.orderStatusDetail.currnetOrderStatus.setOrder}">
+                                <a class="button">
+                                    <i class="icon-pay">
+                                    </i>
+                                    <small>已下单</small>
+                                </a>
+                            </li>
+                            <li :class="{'on' : $model.orderStatusDetail.currnetOrderStatus.pay}">
+                                <a class="button">
+                                    <i class="icon-deliver">
+                                    </i>
+                                    <small>已付款</small>
+                                </a>
+                            </li>
+                            <li :class="{'on' : $model.orderStatusDetail.currnetOrderStatus.sendGoods}">
+                                <a class="button">
+                                    <i class="icon-send">
+                                    </i>
+                                    <small>已发货</small>
+                                </a>
+                            </li>
+                            <li :class="{'on' : $model.orderStatusDetail.currnetOrderStatus.getGoods}">
+                                <a class="button">
+                                    <i class="icon-goodsnew">
+                                    </i>
+                                    <small>已收货</small>
+                                </a>
+                            </li>
+                            <li :class="{'on' : $model.orderStatusDetail.currnetOrderStatus.done}">
+                                <a class="button">
+                                    <i class="icon-post">
+                                    </i>
+                                    <small>已完成</small>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="layout">
+                        <ul>
+                            <li>
+                                <div class="item button">
+                                    <div class="media medium">
+                                        <img :src="$model.goodsImages"/>
+                                    </div>
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop">
+                                                <div class="l margin-top-far">
+                                                    {{$model.goodsName}}
+                                                </div>
+                                                <div class="r">
+                                                    <div v-if ='$model.orderStatusDetail.orderStatusRemark.applyPayBack' class="apply-pay-back"></div>
+                                                    <div v-if ='$model.orderStatusDetail.orderStatusRemark.applyGoodsBack' class="apply-goods-back"></div>
+                                                    <div v-if ='$model.orderStatusDetail.orderStatusRemark.goodsBackDone' class="goods-back-done"></div>
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l number fz-medium fg-red">
+                                                   订单总额：{{$model.orderTotalMoney}}元
+                                                </div>
+                                                <div class="r fz-medium fg-red">
+                                                    提成：{{$model.orderRecommendMoney}}元
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l number fz-medium fg-gray">
+                                                  订单号：{{$model.orderNo}}
+                                                </div>
+                                                <div class="r fz-medium fg-gray">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l number fz-medium fg-gray">
+                                                    下单客户：{{$model.memberName}}
+                                                </div>
+                                                <div class="r fz-medium fg-gray">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="porcess">
+                        <p>下单时间：{{$model.orderTime}}</p>
+                        <p class="fg-red">预计提成到账时间：{{$model.predictTime}}</p>
+                    </div>
+                </section>
+            </sep-render>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

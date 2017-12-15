@@ -1,0 +1,22 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <!--<a back class="button"><i class = "icon-close"></i></a>-->
+                <a @click="m_my_back" class="button"><i class="icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class = 'body'>
+        <sep-scroll :downpull_lock = 'true' >
+            <iframe width="100%" :src="src" height="600px"></iframe>
+        </sep-scroll>
+    </div>
+</div>

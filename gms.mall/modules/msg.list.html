@@ -1,0 +1,56 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class ="icon-back fg-black"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+            <sep-render>
+                <section slot="entity">
+                    <div class="layout">
+                        <ul>
+                            <li v-for="el in $model.list">
+                                <div class="item topalign link button">
+                                    <div class="media large ling">
+                                        <img :src="el.img">
+                                    </div>
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop">
+                                                <div class="l">
+                                                    {{el.smsType}}
+                                                </div>
+                                                <div class="r">
+                                                    <small class="fg-gray fz-medium">{{el.sysRead}}</small>
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l doubleline fg-gray fz-medium">
+                                                    {{el.content}}
+                                                </div>
+                                                <div class="r">
+                                                    <a type = 'edit' class="ev-stop button icon-delete fg-gray" v-click = "{method : m_remove , args : el}"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div> 
+                </section>
+            </sep-render>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

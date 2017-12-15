@@ -1,0 +1,264 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll style="bottom:50px">
+            <sep-render>
+                <section slot = 'entity'>
+                    <!-- {{$model.orderDetail.orderStatusDescDetail}}
+                    {{$model.orderDetail.orderStatus}} -->
+                    <div class="top">
+                        <div class="layout">
+                            <ul>
+                                <li>
+                                    <div class="item link-arrow ev-prevent">
+                                        <div class="content">
+                                            <div class="props">
+                                                <div class="prop">
+                                                    <div class="l">
+                                                        {{$model.orderDetail.orderStatusDescDetail}}
+                                                    </div>
+                                                    <div class="r"></div>
+                                                </div>
+                                                <div class="prop">
+                                                    <div class="l">
+                                                        <span class="number fz-small" v-if = '1 == orderStatus'>
+                                                            剩
+                                                            <b v-count-down = "{name : 'timers', sub : 1000, sleep : 1000, callback : m_check_timer}">
+                                                                <em v-if = 'out_timers.dd'>
+                                                                    <em class = 'dd'>
+                                                                        {{out_timers.dd}}
+                                                                    </em>
+                                                                    <small>天</small>
+                                                                </em>
+                                                                <em v-if = 'out_timers.hh'>
+                                                                    <em class = 'hh'>
+                                                                        {{out_timers.hh}}
+                                                                    </em>
+                                                                    <small>小时</small>
+                                                                </em>
+                                                                <em v-if = 'out_timers.mm'>
+                                                                    <em class = 'mm'>
+                                                                        {{out_timers.mm}}
+                                                                    </em>
+                                                                    <small>分</small>
+                                                                </em>
+                                                                <em>
+                                                                    <em class = 'ss'>
+                                                                        {{out_timers.ss}}
+                                                                    </em>
+                                                                    <small>秒</small>
+                                                                </em>
+                                                            </b>
+                                                            自动关闭
+                                                        </span>
+                                                        <span class="number fz-small" v-if = '-1 == orderStatus'>
+                                                            订单超时
+                                                        </span>
+                                                        <span class="number fz-small" v-else></span>
+
+                                                    </div>
+                                                    <div class="r"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="other">
+                                            <small class="number">
+                                                <img :src="icons[$model.orderDetail.orderStatus]" />
+                                            </small>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="layout">
+                        <ul>
+                            <li>
+                                <!-- link(可链接) link-arrow(带箭头链接) -->
+                                <div class="item link">
+                                    <div class = 'media'>
+                                        <i class = 'icon-locationfill fg-red'></i>
+                                    </div>
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop">
+                                                <div class="l">
+                                                    {{$model.addressDetail.receiver}} <strong>({{$model.addressDetail.receiverPhone}})</strong>
+                                                </div>
+                                                <div class="r">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l">
+                                                    <span class="fg-gray fz-small">
+                                                        {{$model.addressDetail.sendAddress}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="layout margin-top-far">
+                        <ul>
+                            <li v-click="{method:m_push,args:goodsId}">
+                                <div class="item topalign button margin-bottom-far">
+                                    <div class="media large border-radius-near beyond-hide">
+                                        <img :src="$model.goodsDetail.goodsImages">
+                                    </div>
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop topalign">
+                                                <div class="l">
+                                                    <span class = 'fg-black fz-medium doubleline'>{{$model.goodsDetail.goodsName}}</span>
+                                                </div>
+                                                <div class="r">
+                                                     <strong class = 'fz-large price fg-red'>
+                                                        <small>￥</small>
+                                                        {{$model.goodsDetail.goodsPrice}}
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l">
+                                                </div>
+                                                <div class="r">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="button item">
+                                    <div class="content">
+                                        藏品总价
+                                    </div>
+                                    <div class="other">
+                                        {{$model.goodsDetail.goodsPrice}}元
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="button item">
+                                    <div class="content">
+                                        运费
+                                    </div>
+                                    <div class="other">
+                                        {{$model.orderDetail.orderFreight}}元
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="button item">
+                                    <div class="content">
+                                        订单总额（实付）
+                                    </div>
+                                    <div class="other fg-red">
+                                        {{$model.orderDetail.orderPrice}}元
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="layout margin-top-far">
+                        <ul>
+                            <li>
+                                <div class="item link">
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop">
+                                                <div class="l">
+                                                    订单编号：{{$model.orderDetail.orderNo}}
+                                                </div>
+                                                <div class="r button copy" :data-clipboard-text = 'text' v-click = 'm_copy' >
+                                                    复制
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l number">
+                                                    下单时间：{{$model.orderDetail.orderSetOrderTime}}
+                                                </div>
+                                                <div class="r">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="prop" v-if = '!m_has_del()'>
+                                                <div class="l number">
+                                                    付款时间：{{$model.orderDetail.orderPayTime}}
+                                                </div>
+                                                <div class="r">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </sep-render>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        <sep-options title = "请选择支付方式">
+            <!-- <a class = "button" v-click = 'm_wechat_pay'>微信支付</a>
+            <a class = "button" v-click = 'm_ali_pay'>支付宝支付</a> -->
+            <a class = "button" v-click = 'm_yl_pay'>银联支付</a>
+            <a class = "button" v-click = 'm_balance_pay'>余额支付</a>
+            <a v-click = "options.m_hide" class = "button fg-red margin-top-near">取消</a>
+        </sep-options>
+        <div class='footer'>
+            <div class='wrap flexbox centeralign'>
+                <div class='l primary blue'>
+                    <a class='button' :href="'tel:'+tel" style="color:red;">联系经纪人</a>
+                </div>
+                <div class='r primary blue' v-if='m_has_cancel()'>
+                    <a class='button' v-click='m_cancel_order'>取消订单</a>
+                </div>
+
+                <div class='r primary blue' v-if='m_has_send()'>
+                    <a class='button' v-click='m_send'>待发货</a>
+                </div>
+
+                <div class='r primary blue' v-if='m_has_wait_pay()'>
+                    <a class='button' v-click='m_wait_pay'>待付款</a>
+                </div>
+                <div class='r primary blue' v-if='m_has_pay()'>
+                    <a class='button' v-click='m_pay'>付款</a>
+                </div>
+                <div class='r primary blue' v-if='m_has_refund()'>
+                    <a class='button' v-click='m_refund'>申请退款</a>
+                </div>
+                <div class='r primary blue' v-if='m_has_receive()'>
+                    <a class='button' v-click='m_receive'>确认收货</a>
+                </div>
+                <div class='r primary blue' v-if='m_has_del()'>
+                    <a class='button' v-click='m_delete_order'>删除订单</a>
+                </div>
+                <div class="r primary blue" v-if='m_has_refund_order()'>
+                    <a class='button'>合计退款总额：{{$model.orderDetail.orderCharge}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

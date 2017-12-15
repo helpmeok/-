@@ -1,0 +1,113 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class = "button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+            </div>
+        </div>
+    </div>
+
+    <div class="body">
+        <div class="layout">
+            <ul>
+                <li>
+                    <div class="button item topalign ">
+                        <div class="media large redu">
+                            <img :src="list.portraitUrl">
+                        </div>
+                        <div class="content">
+                            <div class="props">
+                                <div class="prop">
+                                    <div class="l">
+                                        姓名 : {{list.name}}
+                                    </div>
+                                </div>
+                                <div class="prop">
+                                    <a class="l number fg-red" :href="'tel:'+list.mobile">
+                                        电话 : {{list.mobile}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other">
+                            <div class="media medium">
+                                <img :src="list.qrCode">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <sep-scroll style="bottom: 52px;top: 90px">
+            <div class = 'login' >
+                <div class="layout">
+                    <ul>
+                        <li>
+                            <div class="item topalign">
+                                <!-- <div class="media medium border-radius-100per">
+                                    <img src=''>
+                                </div> -->
+                                <div class="content">
+                                    <div class="props">
+                                        <div class="prop">
+                                            <div class="l fg-gray">
+                                                用户名字<small class='tel'>13625**7690</small>
+                                            </div>
+                                            <div class="r">
+                                                <small class='number fz-medium fg-gray'></small>
+                                            </div>
+                                        </div>
+                                        <!--<div class="prop">-->
+                                            <!--<div class="l fz-medium">-->
+                                                <!--我洗澡去了我洗澡去了我洗澡去了我洗澡去了我洗澡去了我洗澡去了我洗澡去了-->
+                                            <!--</div>-->
+                                            <!--<div class="r">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="prop">-->
+                                            <!--<div class="l fz-medium">-->
+                                                <!--<img src="http://gms-shop.oss-cn-hangzhou.aliyuncs.com/common/9ad8b7ac6f801ca5920ffe77bd3a65c6.jpg" width="100%" />-->
+                                            <!--</div>-->
+                                            <!--<div class="r">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="prop reply">-->
+                                            <!--<div class='flexbox centeralign'>-->
+                                                <!--<div class='l'>-->
+                                                    <!--<span class='nickname'>客服：<small>回复</small></span>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="prop reply">-->
+                                            <!--<div class='flexbox centeralign'>-->
+                                                <!--<div class='l'>-->
+                                                    <!--<small class='content'>嗯,多喝点热水嗯,多喝点热水嗯,多喝点热水</small>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                                <div class="other">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>   
+        <div class = "footer center" >
+            <div class = "bg-white">
+                <!--<a class="button default submit save "><b>点击反馈您的问题</b></a>-->
+            </div>
+        </div>
+
+    </div>
+</div>

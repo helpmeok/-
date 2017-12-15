@@ -1,0 +1,67 @@
+.user-reg .body {
+	background-color: #fff;
+}
+.user-reg .top {
+	text-align: center;
+}
+.user-reg .top .logo {
+	margin-top: 5%;
+	vertical-align: middle;
+}
+.user-reg .regbox {
+	text-align: center;
+}
+
+.user-reg .regbox .layout {
+	margin-top: 20px;
+}
+.user-reg .regbox .layout .item {
+	margin: 10px 20px 20px 20px;
+}
+.user-reg .regbox .layout .db{
+	border-radius: 30px;
+	border: 1px solid #D3D3D3;
+	padding: 0 20px;
+}
+
+.user-reg .regbox .layout .content {
+}
+.user-reg .regbox .layout .content i {
+	display: inline-block;
+	text-align: center;
+	font-size: 18px;
+	margin-right: 10px;
+}
+
+.user-reg .regbox .layout > ul:before {
+	display: none;
+}
+.user-reg .regbox .layout > ul > li .item:before {
+	display: none;
+}
+
+.user-reg .regbox .submit {
+	margin: 10px 40px 20px 40px;
+	border-radius: 30px;
+	border: 1px solid transparent;
+	background-color: #FF0E0D;
+}
+.user-reg .regbox .submit.disable {
+	background-color: transparent;
+	border: 1px solid #D3D3D3;
+}
+
+.user-reg .button.req-code.disable {
+	background-color:#eee;
+	color:#999;
+}
+
+.user-reg .layout>ul>li .item .other .but{
+    width: 92px;
+    height: 32px;
+    box-shadow: 0px 0px 2px #ccc;
+    display: block;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-left: 10px;
+}

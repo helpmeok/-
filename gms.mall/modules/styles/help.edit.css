@@ -1,0 +1,46 @@
+.help-edit .layout > ul > li .item.link-arrow:after {
+    content: "";
+    display: none;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #c8c8cd;
+    border-style: solid;
+    position: relative;
+    margin-left: .3em;
+}
+.help-edit .layout>ul>li .item.link-arrow .margin-left {
+    padding-left: 10px;
+}
+
+.help-edit .footer .wrap .l,
+.help-edit .footer .wrap .r {
+    text-align: center;
+}
+
+.help-edit .footer .wrap .button {
+    padding: 15px 35px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.help-edit .footer .wrap .blue {
+    color: #D81617;
+    /*border-color: #ccc;
+    border-style: solid;
+    border-width: 1px 0px 0px 0px*/
+
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+    text-align: center;
+
+    
+}
+/*
+.help-edit .footer .wrap .blue .addblue {
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 0px 1px 0px 0px
+}*/

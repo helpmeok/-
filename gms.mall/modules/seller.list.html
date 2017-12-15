@@ -1,0 +1,128 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                <!-- <a back class="button"><i class = "icon-close"></i></a> -->
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <div class='tab red'>
+                <div class='wrap' v-calc-width>
+                    <div class='button'>
+                        <input type='radio' name='radio' value = '0' checked='checked' v-model = 'status' />
+                        <div class='item'>
+                            <small>
+                                在审核
+                            </small>
+                        </div>
+                    </div>
+                    <div class='button'>
+                        <input type='radio' name='radio' value = '1' v-model = 'status' />
+                        <div class='item'>
+                            <small>
+                                在售
+                            </small>
+                        </div>
+                    </div>
+                    <div class='button'>
+                        <input type='radio' name='radio' value="2"  v-model = 'status' />
+                        <div class='item'>
+                            <small>
+                                发货中
+                            </small>
+                        </div>
+                    </div>
+                    <div class='button'>
+                        <input type='radio' name='radio' value="3" v-model = 'status' />
+                        <div class='item'>
+                            <small>
+                                已完成
+                            </small>
+                        </div>
+                    </div>
+                    <div class='button'>
+                        <input type='radio' name='radio' value="4" v-model = 'status' />
+                        <div class='item'>
+                            <small>
+                                已下架
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='list'>
+                <div class='wrap'>
+                    <div class="button default visual blue border-radius-far" style="background-color:#64d6ff;color: #ffffff" v-if="status==0" v-click="m_push">
+                        上传商品
+                    </div>
+
+                    <sep-render :login="false">
+                        <section slot = 'empty'>
+                            <sep-empty text = '暂无商品'></sep-empty>
+                        </section>
+                        <section slot='entity'>
+                            <div class="layout list">
+                                <ul>
+                                    <li class = 'margin-bottom-far'  v-for = 'el in $model.list'>
+                                        <div class="top" v-if = "'2'==status">
+                                            <span>订单号：{{el.orderNo}}</span>
+                                            <span class = 'fg-yellow'></span>
+                                        </div>
+                                        <div class="top" v-if = "'3'==status">
+                                            <span>订单号：{{el.orderNo}}</span>
+                                            <span class = 'fg-yellow'></span>
+                                        </div>
+                                        <div class="item topalign button">
+                                            <div class="media large">
+                                                <img :src="el.mainImages">
+                                            </div>
+                                            <div class="content">
+                                                <div class="props">
+                                                    <div class="prop">
+                                                        <div class="l singleline fz-medium">
+                                                            {{el.goodsName}}
+                                                        </div>
+                                                        <div class="r">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="prop">
+                                                        <div class="l fz-medium">
+                                                            商品编号:{{el.goodsNo}}
+                                                        </div>
+                                                        <div class="r">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <!--<div class="prop">-->
+                                                        <!--<div class="l fz-medium fg-red">-->
+                                                            <!--单价：{{el.sellingPrice}}元-->
+                                                        <!--</div>-->
+                                                        <!--<div class="r">-->
+                                                            <!---->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </sep-render>
+                </div>
+            </div>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

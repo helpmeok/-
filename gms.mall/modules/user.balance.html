@@ -1,0 +1,63 @@
+<form class = "viewbox" v-form = 'form'>
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <div class="heads">
+                <p class="fz-large fg-white text-align-center">可用余额（元）</p>
+                <p class = 'fg-white text-align-center'>{{user.balance}}</p>
+            </div>
+            <div class="operation">
+                <a push = 'user.recharge'>账户充值</a>
+                <a push = 'user.balance.extract'>余额提现</a>
+            </div>
+            <div class="top">
+                <!--<sep-text-scroll text = "金额提现中:10000.00元" icon = "icon-notificationfill" sleep = "1000"></sep-text-scroll>-->
+            </div>
+            <div class="layout margin-top-far">
+                <ul>
+                    <li>
+                        <div class="button item link-arrow" push = 'user.balance.detail'>
+                            <div class="content">
+                                账户明细
+                            </div>
+                            <div class="other">
+                                
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout">
+                <ul>
+                    <li>
+                        <div class="button item link-arrow" push = 'user.extract.record'>
+                            <div class="content">
+                                申请记录
+                            </div>
+                            <div class="other">
+                                
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        
+    </div>
+    
+</form>

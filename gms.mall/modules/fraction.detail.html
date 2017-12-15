@@ -1,0 +1,306 @@
+<form class = "viewbox" v-form = 'form'>
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<section v-if = 'form.model.goodsId'>
+				<div class="layout">
+					<ul>
+						<li>
+							<div class="fillitem button">
+								<div class="top">
+									<div class="l">
+										<small class=" fz-16px">本月已评 <span class="fg-red number">{{monthScoreNum}}</span> 件</small>
+									</div>
+									<div class="r">
+										<small class="primary fz-16px">今日已评 <b class="fg-red number">{{dayScoreNum}}</b> 件</small>  <i class ="icon-question fg-black"></i>
+									</div>
+								</div>
+								<div class="item topalign link">
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l">
+													 {{form.model.goodsName}}
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			    <div class="swiper-box">
+			        <sep-swiper :autoplay="3000" :pagination="true">
+			            <div v-for='el in form.model.images' class="swiper-slide">
+			                <img :data-src="el.url" class="swiper-lazy" width="100%" />
+			                <div class="swiper-lazy-preloader"></div>
+			            </div>
+			            <div v-if='form.model.images && 0 == form.model.images.length' class="swiper-slide placeholder">
+			                <i class='icon-pic'></i>
+			                <p>暂无细节图</p>
+			            </div>
+			        </sep-swiper>
+			    </div>
+			    <div class="layout">
+			        <ul>
+			            <li>
+			                
+			                <div class=" item ">
+			                    <div class="content">0
+			                        类别：{{form.model.crafts}}
+			                    </div>
+			                    <div class="other">
+			                       年代：{{form.model.years}}
+			                    </div>
+			                </div>
+			            </li>
+			        </ul>
+			    </div>
+			   	<div class = 'tablebox'>
+			    	<table>
+				    	<thead>
+				    		<tr>
+				    			<td colspan="3" class = 'total-score number'>
+				    				评估分：{{total_score}}
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td width = '30%'>
+				    				属性
+				    			</td>
+				    			<td width = '40%'>
+				    				信息
+				    			</td>
+				    			<td width = '30%'>
+				    				是否符合
+				    			</td>
+				    		</tr>
+				    	</thead>
+				    	<tbody>
+				    		<tr>
+				    			<td>
+				    				品相
+				    			</td>
+				    			<td>
+				    				{{form.model.grade}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.grade'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+
+				    		<tr>
+				    			<td>
+				    				年份
+				    			</td>
+				    			<td>
+				    				{{form.model.years}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.years'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+
+				    		<tr>
+				    			<td>
+				    				材质
+				    			</td>
+				    			<td>
+				    				{{form.model.material}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.material'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+
+				    		<tr>
+				    			<td>
+				    				工艺
+				    			</td>
+				    			<td>
+				    				{{form.model.crafts}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.crafts'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+
+				    		<tr>
+				    			<td>
+				    				款识
+				    			</td>
+				    			<td>
+				    				{{form.model.style}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.style'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+
+				    		<tr>
+				    			<td>
+				    				器型
+				    			</td>
+				    			<td>
+				    				{{form.model.shape}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.shape'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+
+				    		<tr>
+				    			<td>
+				    				尺寸
+				    			</td>
+				    			<td>
+				    				{{form.model.shape}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.size'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+
+
+				    		<tr>
+				    			<td>
+				    				来源
+				    			</td>
+				    			<td>
+				    				{{form.model.source}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.source'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+
+				    		<tr>
+				    			<td>
+				    				图片质量
+				    			</td>
+				    			<td>
+				    				{{form.model.pictureQuality}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.pictureQuality'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				市场热度
+				    			</td>
+				    			<td>
+				    				{{form.model.marketFever}}
+				    			</td>
+				    			<td>	
+				    				<div class="button checkbox">
+			                            <input type="checkbox" name="checkbox" v-model='form.model.vals.marketFever'>
+			                            <i></i>
+			                            <small></small>
+			                        </div>
+				    			</td>
+				    		</tr>
+				    	</tbody>
+			    	</table>
+			    </div>
+
+			    <div class="layout">
+					<ul>
+						<li>
+							<div class="item field">
+								<div class="content">
+									<em class="name">
+										评估价格
+									</em>
+									<div class="edit">
+										 <input type="text" placeholder="请输入金额" v-rules = '{required : true}' data-required-msg = '请输入金额' v-model='form.model.price'> 
+									</div>
+								</div>
+								<div class="other">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item field topalign">
+								<div class="content">
+									<div class="edit">
+										<textarea maxlength='500' v-model='desc' placeholder="点击输入您的问题，我们将尽快给您回复"></textarea>
+										<span class="counter">
+											{{desc.length}} / 500
+										</span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<input type = 'hidden' v-model = 'total_score' v-rules = '{min : 1}' data-min-msg = '评分至少1分' />
+
+				<div class = "padding-far">
+	                <sep-button class = 'border-radius-far submit red default' text = '确认'  wtext = '确认中..' v-click = 'form.m_submit'></sep-button>
+	            </div>
+			</section>
+			<section v-else>
+				暂无可评分商品
+				<a class = 'button'>查看历史</a>
+			</section>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</form>
+

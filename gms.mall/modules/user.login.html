@@ -1,0 +1,92 @@
+<form class = "viewbox" v-form = 'form'>
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-close"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <div class = 'top'>
+                <div class = 'wrap'>
+                    <img width = '30%' class = 'logo' src = 'modules/images/logo.png' />
+                </div>
+            </div>
+            <div class = 'loginbox'>
+                <div class = 'wrap'>
+                    <div class = 'types'>
+                        <div class = 'item button' :class = '{on : 1 == logintype}' v-click = '{method : m_change_login_type, args : 1}'>
+                            密码登录
+                        </div>
+                        <div class = 'item button'  :class = '{on : 2 == logintype}' v-click = '{method : m_change_login_type, args : 2}'>
+                            验证码登录
+                        </div>
+                    </div>
+                    <div class="layout">
+                        <ul>
+                            <li>
+                                <div class="item field">
+                                    <div class="content">
+                                        <i class = 'icon-mobile'></i>
+                                        <div class="edit">
+                                            <input type="text" placeholder="请输入手机号码" v-rules = '{required : true, maxlength : 11}' data-minlength-msg = '手机格式不正确' data-required-msg = '请输入手机号码' v-model = 'form.model.mobile' maxlength="11" class="mobile">
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item field" v-if = '1 == logintype'>
+                                    <div class="content">
+                                        <i class = 'icon-lock'></i>
+                                        <div class="edit">
+                                            <input :type="type" v-model = 'form.model.password' v-rules = '{required : true}' data-required-msg = '请输入密码'  placeholder="请输入密码">
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                        <div class="button switch">
+                                            <input type="checkbox" name="switch" v-model = 'checked'>
+                                            <a class = 'button icon-attention'></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item field" v-if = '2 == logintype'>
+                                    <div class="content">
+                                        <i class = 'icon-security'></i>
+                                        <div class="edit">
+                                            <input type="text" v-model = 'form.model.msgCode' placeholder="请输入验证码">
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                        <sep-button text = '获取验证码' :wtext = 'wtext' class="red medium req-code border-radius-far" v-click = 'm_step1'></sep-button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <sep-button :class = '{disable : 0 == form.status}' v-click = 'form.m_submit' class = 'red submit' text = '登录' wtext = '登录中...'>
+                    </sep-button>
+                </div>
+                <div class = 'operation'>
+                    <a class = 'button fg-red reg' push = 'user.reg'>注册账号</a>
+                    <a class = 'button fg-gray findpwd' push = 'user.findpwd'>忘记密码?</a>
+                </div>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        
+    </div>
+    
+</form>

@@ -1,0 +1,10 @@
+.agreement{}
+.agreement .submit {
+    margin: 10px 40px 20px 40px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    background-color: #FF0E0D;
+    text-align: center;
+    display: block;
+    padding: 8px 0;
+}

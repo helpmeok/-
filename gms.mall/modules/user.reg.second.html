@@ -1,0 +1,47 @@
+<form class = "viewbox" v-form = 'form'>
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <!--
+                列表页
+            -->
+            <div class = 'regbox'>
+                <div class = 'wrap'>
+                    <div class="layout two">
+                        <p>验证码已通过短信发送至</p>
+                        <p class="pp">{{mobile}}</p>
+                        <div class="messagebox" >
+                            <input type="tel" name="data_msgcode" class="msgcode" data-busy="0" maxlength="6" autocomplete="off" v-model = 'msgCode' v-rules = '{required : true, minlength : 6}' data-required-msg = '请输入验证码' data-tel-msg = '验证码格式错误' >
+                            <div class="six flexbox" >
+                                <h2 class="bb primary" >{{ msgCode[0] }}</h2>
+                                <h2 class="bb primary" >{{ msgCode[1] }}</h2>
+                                <h2 class="bb primary" >{{ msgCode[2] }}</h2>
+                                <h2 class="bb primary" >{{ msgCode[3] }}</h2>
+                                <h2 class="bb primary" >{{ msgCode[4] }}</h2>
+                                <h2 class="bb primary" >{{ msgCode[5] }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <sep-button :class = '{disable : 0 == form.status}' text = '继续' wtext = '继续'  class="red submit  req-code" v-click = "m_req_code"></sep-button>
+                </div>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        
+    </div>
+    
+</form>

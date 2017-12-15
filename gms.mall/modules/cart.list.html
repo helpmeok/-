@@ -1,0 +1,152 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    
+    <sep-actionsheet mode = '1'>
+        <div class="layout">
+            <div class = 'total'>
+                <span class = 'text primary'>订单总额：<small>￥</small>{{total}}</span>
+                <a class = 'close button icon-close' v-click = 'actionsheet.m_hide'></a>
+            </div>
+            <ul>
+                <li v-for = 'el in choose_list'>
+                    <div class="item">
+                        <div class="media medium">
+                            <img :src = 'el.goodsImages' />
+                        </div>
+                        <div class="content">
+                            <div class="props">
+                                <div class="prop">
+                                    <div class="l">
+                                        {{el.goodsName}}
+                                    </div>
+                                    <div class="r">
+                                    </div>
+                                </div>
+                                <div class="prop">
+                                    <div class="l number fg-red">
+                                        <small>￥</small>{{el.goodsPrice}}
+                                    </div>
+                                    <div class="r">
+                                        ×{{el.num}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class = 'operation padding-far'>
+            <a class = 'button default red border-radius-near' v-click = 'm_generate_order'>确认下单</a>
+        </div>
+    </sep-actionsheet>
+
+    <div class = 'body'>
+        <sep-scroll :style = "null != $model.list ? {bottom : '50px'} : {bottom : '0px'} ">
+            <!--
+                列表页
+            -->
+            <sep-render>
+                <section slot = 'empty'>
+                    <sep-empty text = '您的购物车空空如也，快去添加吧~' icon = 'icon-gouwuchekong'></sep-empty>
+                </section>
+                <section slot = 'entity'>
+                    <div class="layout list">
+                        <ul>
+                            <li v-for = 'el in $model.list'>
+                                <div class="item topalign button margin-bottom-far" v-click = '{method : m_push, args : el}'>
+                                    <div class="checkbox button ev-stop" v-if = 'false == el.hasOrder'>
+                                        <input type="checkbox" name="checkbox" value = '1' v-model = 'el.checked'>
+                                        <i>
+                                        </i>
+                                    </div>
+                                    <div class="media large border-radius-near beyond-hide">
+                                        <div class="sell-out" v-if = 'true == el.hasOrder'>
+                                            <small>失效</small>
+                                        </div>
+                                        <img :src="el.goodsImages">
+                                    </div>
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop topalign">
+                                                <div class="l">
+                                                    <span class = 'fg-black fz-medium doubleline'>{{el.goodsName}}</span>
+                                                </div>
+                                                <div class="r">
+                                                     <strong class = 'fz-large price fg-red'>
+                                                        <small>￥</small>
+                                                        {{el.goodsPrice}}
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l">
+                                                    <span class = 'fg-gray fz-large number'>×{{el.num}}</span>
+                                                </div>
+                                                <div class="r">
+                                                     <a class = 'icon-delete button ev-stop fg-gray' v-click = '{method : m_remove, args : el}'></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </sep-render>
+
+            <p class='pp'>
+                <a v-click = 'm_remove_abnormal' v-if = 'abnormal_size'>删除异常的商品</a>    
+                <a v-click = 'm_toggle_editor' v-if = '$model.list.length && abnormal_size != $model.list.length'>编辑</a>
+            </p>
+                
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+    <div class = 'footer' v-if = '$model.list.length'>
+        <div class = 'wrap flexbox centeralign'>
+            <div class = 'l'>
+                <!--<div class="checkbox button toggle-choose" :class = '{disable : abnormal_size == $model.list.length}'>-->
+                	 <div class="checkbox button toggle-choose">
+                    <input type="checkbox" name="checkbox" :checked = 'toggle_checked'  @change='m_toggle_checked'>
+                    <i>
+                    </i>
+                    全选
+                </div>
+            </div>
+            <div class = 'r'>
+                <div class = 'flexbox centeralign' v-show = '!iseditor'>
+                    <span class = 'info margin-right-far'>
+                        <p>
+                            <small class = 'fg-black fz-small'>合计:</small><strong class = 'price fg-red'><small>￥</small>{{total}}</strong>
+                        </p>
+                        <p>
+                            <span class = 'fz-small fg-gray'>不含运费</span>
+                        </p>
+                    </span>
+                    <a class = 'primary button submit' :class = '{disable : 0 == choose_counter}' v-click = 'actionsheet.m_show'>结算({{choose_counter}})</a>
+                </div>
+                <div v-show = 'iseditor'>
+                    <a class = 'button' v-click = 'm_choose_removes' :class = '{disable : 0 == choose_counter}'>选中删除</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

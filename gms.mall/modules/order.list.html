@@ -1,0 +1,138 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <div class='tab red'>
+            <div class='wrap' v-calc-width>
+                <div class='button'>
+                    <input type='radio' name='radio' value = '' checked='checked' v-model = 'status' />
+                    <div class='item'>
+                        <small>
+                            全部
+                        </small>
+                    </div>
+                </div>
+                <div class='button'>
+                    <input type='radio' name='radio' value="1"  v-model = 'status' />
+                    <div class='item'>
+                        <small>
+                            待付款
+                        </small>
+                    </div>
+                </div>
+                <div class='button'>
+                    <input type='radio' name='radio' value="2" v-model = 'status' />
+                    <div class='item'>
+                        <small>
+                            待发货
+                        </small>
+                    </div>
+                </div>
+                <div class='button'>
+                    <input type='radio' name='radio' value="3" v-model = 'status' />
+                    <div class='item'>
+                        <small>
+                            待收货
+                        </small>
+                    </div>
+                </div>
+                <div class='button'>
+                    <input type='radio' name='radio' value="6" v-model = 'status' />
+                    <div class='item'>
+                        <small>
+                            已收货
+                        </small>
+                    </div>
+                </div>
+                <div class='button'>
+                    <input type='radio' name='radio' value="12" v-model = 'status' />
+                    <div class='item'>
+                        <small>
+                            已关闭
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <sep-scroll>
+            <sep-render>
+                <section slot = 'entity'>
+                    <div class="layout list" v-svl = 'svl'>
+                        <ul>
+                            <li v-for = 'el in svl.model' class = 'margin-bottom-far' :push = "'order.detail?id=' + el.serialNo" v-click="{method:m_push_goodsId,args:el.goodsId}">
+                                <div class="top">
+                                    <span>订单号：{{el.orderNo}}</span>
+                                    <span class = 'fg-yellow'>{{el.statusDesc}}</span>
+                                </div>
+                                <div class="item topalign button">
+                                    <div class="media large">
+                                        <img :src="el.goodsImages">
+                                    </div>
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop">
+                                                <div class="l singleline fz-medium">
+                                                    {{el.goodsName}}
+                                                </div>
+                                                <div class="r">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l fz-medium">
+                                                    订单金额：<small class = 'fg-red'>{{el.orderPrice}}元</small>
+                                                </div>
+                                                <div class="r">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l fz-medium">
+                                                    下单时间：{{el.setOrderTime}}
+                                                </div>
+                                                <div class="r">
+                                                    <a v-if = '1 == el.status' class = 'button ev-stop' v-click = '{method : m_pay, args : el}'>去支付</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </sep-render>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+    <!-- <div class = 'footer' v-if = '1 == status'>
+        <div class = 'wrap flexbox centeralign'>
+            <div class = 'l margin-left-far'>
+                <div class="checkbox button">
+                    <input type="checkbox" name="checkbox" :checked = 'toggle_checked'  @change = 'm_toggle_checked'>
+                    <i>
+                    </i>
+                    全选
+                </div>
+            </div>
+            <div class = 'r'>
+                <div class = 'flexbox centeralign'>
+                    <a class = 'button default red border-radius-near' v-click = 'm_submit'>确认支付</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

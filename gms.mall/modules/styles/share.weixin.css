@@ -1,0 +1,8 @@
+.share-weixin .image {
+    position: absolute;
+    z-index: 300;
+    width: 100%;
+    right: 0px;
+    top: 0px;
+    bottom: 0;
+}

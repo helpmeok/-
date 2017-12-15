@@ -1,0 +1,15 @@
+.user-center .top {
+	background-color: #FF0E0D;
+}
+.user-center .tools {
+    border-top: 1px solid #eee;
+}
+.user-center .layout > ul > li.tools-more .item {
+    min-height: 35px;
+    padding-top:2.5px;
+    padding-bottom: 2.5px;
+}
+
+.user-center .func .media i {
+	color: #969696;
+}

@@ -1,0 +1,64 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <!--<a back class="button"><i class ="icon-back fg-black"></i></a>-->
+                <a @click = "m_my_back" class="button"><i class ="icon-back fg-black"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <sep-render>
+                <section slot = 'entity'>
+                    <div class="layout">
+                        <ul>
+                            <li v-for="el in $model.list">
+                                <div class="item button">
+                                    <!-- <div class="media medium">
+                                        <img :src="el.imgUrl"/>
+                                    </div> -->
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop">
+                                                <div class="l">
+                                                    {{el.bankType}}
+                                                </div>
+                                                <div class="r">
+                                                    <a class='ev-stop button icon-delete fg-gray' v-click = "{method : m_remove_from_list, args : el}"></a>
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l number fz-medium fg-gray">
+                                                    {{el.cardNo}}
+                                                </div>
+                                                <div class="r fz-medium fg-gray">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section slot = 'empty'>
+                    <sep-empty></sep-empty>
+                </section>
+            </sep-render>
+            <div class="margin-far button default cool bankblue border-radius-far bankbut" push = "card.edit">
+                <span class="icon-roundadd fg-red"></span> 添加银行卡
+            </div>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

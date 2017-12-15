@@ -1,0 +1,36 @@
+.gdsGoods.update.mobile .submit {
+    margin: 10px 40px 20px 40px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    background-color: #FF0E0D;
+}
+.gdsGoods.update.mobile .submit.disable {
+    background-color: transparent;
+    border: 1px solid #D3D3D3;
+}
+
+.gdsGoods.update.mobile .layout > ul > li .item .op{
+    text-align: center;
+    width: 100%;
+    color: #aaa;
+    font-size: 18px;
+}
+.gdsGoods.update.mobile .button.radio small {
+    padding: 10px;
+    border-radius: 100%;
+    border: 1px solid #aaa;
+    margin-left: 0;
+}
+.gdsGoods.update.mobile .button.radio input[type=radio]:checked ~ small {
+    padding: 10px;
+    border-radius: 100%;
+    border: 1px solid #FF0E0D;
+}.gdsGoods.update.mobile .theme-base .button.radio input[type=radio]:checked ~ small {
+    padding: 10px;
+    border-radius: 100%;
+    border: 1px solid #FF0E0D;
+}
+
+ #imageAdd .icon-add:before {
+     content: "\e625";
+ }

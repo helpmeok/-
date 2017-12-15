@@ -1,0 +1,82 @@
+<form class = "viewbox" v-form = 'form'>
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-close"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <div class="search flexbox">
+                <div class="l">
+                    <select v-rules = '{required : true}' data-required-msg = '请选择分类' v-model = 'iteams'>
+                        <option value="1">藏品</option>
+                        <option value="2">专区</option>
+                        <option value="3">类别</option>
+                    </select>
+                </div>
+                <div class="c primary">
+                    <input type="text" data-required-msg="请输入搜索内容" data-tel-msg="格式无效" placeholder="选古美术就对了" v-model = 'values'>
+                </div>
+                <div class="r">
+                    <div class="button ensure" v-click = 'm_search'>
+                        确定
+                    </div>
+                </div>
+            </div>
+            <div class="hot word margin-top-far">
+                <p>热词</p>
+                <ul style="overflow: hidden;margin-bottom: 30px">
+                    <li v-for="item in rcList">
+                        <a class="button" @click = "m_get_value($event)" >{{item}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div v-if = 'null !== list.goodsList && 0 !== list.goodsList.length'>
+                <div class="layout">
+                    <ul>
+                        <li v-for = 'el in list.goodsList' @click = 'm_push(el.id)'>
+                            <div class="item button link">
+                                <div class="media medium">
+                                    <img :src="el.mainImages">
+                                </div>
+                                <div class="content">
+                                    <div class="props">
+                                        <div class="prop">
+                                            <div class="l singleline">
+                                                {{el.goodsName}}
+                                            </div>
+                                            <div class="r">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="pageinfo">
+                        <div class="wrap flexbox">
+                            <a class="primary button" v-click = 'm_search_prev_page' :class="1 == list.pageCurrent ? 'disable' : '' ">上一页</a>
+                            <a class="primary button" v-click = 'm_search_next_page' :class="list.pageTotal == list.pageCurrent ? 'disable' : '' ">下一页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <sep-empty v-else text='暂无记录' icon="icon-favor"></sep-empty>
+
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        
+    </div>
+    
+</form>

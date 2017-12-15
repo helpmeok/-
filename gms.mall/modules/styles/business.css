@@ -1,0 +1,41 @@
+ .business {
+     display: inline-block;
+     background-color: #fff;
+     border-radius: 10px;
+     padding-top: 10px;
+ }
+
+ .business .typeimg {
+     display: block;
+     margin: 0 auto;
+     width: 50%;
+ }
+
+ .business .typeimg img {
+     width: 100%;
+ }
+
+ .business .titleworld {
+     margin-top: 20px;
+ }
+
+ .business .titleworld .p {
+     text-align: center;
+     color: #000;
+     font-size: 15px;
+     padding: 0 5px;
+ }
+
+ .business .shuer {
+     display: block;
+     z-index: 1;
+     cursor: pointer;
+     margin: 10px 40px 20px 40px;
+     border-radius: 30px;
+     background-color: #FF0E0D;
+     color: #fff;
+     height: 44px;
+     line-height: 44px;
+     text-align: center;
+     font-size: 15px;
+ }

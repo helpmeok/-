@@ -1,0 +1,98 @@
+<form class="viewbox" v-form='form'>
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class="icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+            <div class="layout margin-top-far">
+                <ul>
+                    <li>
+                        <div class="button item">
+                            <div class="content">
+                                充值金额(元)：
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                        <div class="item field">
+                            <div class="content">
+                                <div class="edit">
+                                    <input type="text" placeholder="充值金额不小于100元" v-model="form.model.money">
+                                </div>
+                            </div>
+                            <div class="other">
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout">
+                <ul>
+                    <li>
+                        <div class="button item">
+                            <div class="content">
+                                选择支付方式：
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                        <div class='item field'>
+                            <div class='content'>
+                                <div class='edit'>
+                                    <!--<sep-radios v-model="rechargeType">-->
+                                    <sep-radios v-model="rechargeType">
+
+                                        <!--<div class='button'>-->
+                                        <!--<input value='2'>-->
+                                        <!--<i>-->
+                                        <!--</i>-->
+                                        <!--<small>-->
+                                        <!--支付宝-->
+                                        <!--</small>-->
+                                        <!--</div>-->
+                                        <div class='button'>
+                                            <input value='2'>
+                                            <i>
+                                            </i>
+                                            <small>
+                                                银联贷记卡
+                                            </small>
+                                        </div>
+                                        <div class='button'>
+                                            <input value='1' />
+                                            <i>
+                                            </i>
+                                            <small>
+                                                银联储蓄卡
+                                            </small>
+                                        </div>
+                                    </sep-radios>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class='padding-far'>
+                <sep-button :class='{disable : 0 == form.status}' v-click='form.m_submit'
+                            class='red submit border-radius-near' text='确认充值' wtext='确认充值...'></sep-button>
+            </div>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+
+    </div>
+
+</form>

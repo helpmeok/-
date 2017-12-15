@@ -1,0 +1,93 @@
+.category-list .panel {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+.category-list .panel .l {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 35%;
+	background-color: #eee;
+}
+.category-list .panel .r {
+	position: absolute;
+	left: 35%;
+	bottom: 0;
+	top: 0;
+	right: 0;
+	background-color: #f8f8f8;
+}
+.category-list .panel .l .button {
+
+}
+.category-list .panel .l input[type=radio] {
+	display: none;
+}
+.category-list .panel .l .button {
+	background-color: #fff;
+}
+.category-list .panel .l .button .item {
+	border-left: 2px solid transparent;
+	color: #666;
+}
+.category-list .panel .l input[type=radio]:checked + .item {
+	border-left: 2px solid #ee3333;
+	background-color: #eee;
+	color: #333;
+}
+.category-list .panel .l .button small {
+	font-size: 16px;
+	height: 45px;
+	line-height: 45px;
+	padding-left: 10px;
+}
+
+.category-list .panel .r ul {
+    -webkit-column-count:2; /* Safari 和 Chrome */
+    column-count:2;
+}
+.category-list .panel .r .list .wrap {
+	padding: 10px;
+}
+.category-list .panel .r ul li {
+	margin-bottom: 10px;
+	break-inside: avoid;
+    box-sizing: border-box;
+}
+.category-list .panel .r ul li img {
+	width: 100%;
+}
+
+
+.category-list .panel .r ul li .button small {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 20px;
+    line-height: 20px;
+    padding: 2px 8px;
+    margin: 23px 10px 0px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 4px;
+    font-family: 'Microsoft Yahei';
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.category-list .panel .r ul li .button small:after {
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 1px solid #ddd;
+    content: '';
+    border-radius: 4px;
+}

@@ -1,0 +1,79 @@
+.area-detail .types {
+	margin-top: 15px;
+}
+.area-detail .types .wrap {
+	width: 100%;
+	overflow: auto;
+	position: relative;
+	padding: 10px;
+	background-color: #fff;
+}
+.area-detail .types ul li {
+	display: inline-block;
+	float: left;
+}
+.area-detail .types ul li:after {
+	clear: both;
+	content: '';
+	display: block;
+	visibility: hidden;
+	overflow: hidden;
+	height: 0;
+}
+.area-detail .types ul li input {
+	visibility: hidden;
+}
+.area-detail .types ul li small {
+	display: inline-block;
+	padding: 7.5px 15px;
+	font-size: 14px;
+}
+.area-detail .types ul li input:checked + small {
+	background-color:#FF0E0D;
+	color: #fff;
+	border-radius: 4px;
+}
+/*.area-detail .list ul {
+    -moz-column-count:2; 
+    -webkit-column-count:2;  
+    column-count:2;
+    -moz-column-gap: 1em;
+  	-webkit-column-gap: 1em;
+  	column-gap: 1em;
+}*/
+.area-detail .list ul li {
+	overflow: hidden;
+	break-inside: avoid;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.05);
+    margin-bottom: 10px;
+}
+.area-detail .list .wrap {
+	padding: 10px;
+}
+.area-detail .list ul li .t {
+	padding: 5px 10px;
+}
+.area-detail .list ul li .t em {
+	font-size: 15px;
+	color: #222;
+}
+.area-detail .list ul li .price {
+	font-size: 18px;
+}
+.area-detail .list ul li .b {
+	padding: 5px 10px;
+}
+.area-detail .list ul li .b i {
+	vertical-align: middle;
+	font-size: 14px;
+}
+.area-detail .list ul li .button .image img{
+    width: 100%;
+}
+
+.area-detail .aa{
+    height: 150px;
+    overflow: hidden;
+}

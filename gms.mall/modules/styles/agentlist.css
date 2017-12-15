@@ -1,0 +1,8 @@
+.agentlist{}
+
+.agentlist .layout > ul > li .item .media.large{
+    border-radius: 100%;
+}
+.agentlist .scroll{
+    top: 90px ;
+}

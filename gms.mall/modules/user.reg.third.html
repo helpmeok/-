@@ -1,0 +1,87 @@
+<form class = "viewbox" v-form = 'form'>
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <!--
+                列表页
+            -->
+            <div class = 'regbox'>
+                <div class = 'wrap'>
+                    <div class="layout">
+                        <ul>
+                            <li>
+                                <div class="item field">
+                                    <div class="content">
+                                        <i class = 'icon-mobile'></i>
+                                        <div class="edit">
+                                            <input v-model = 'form.model.nickName' v-rules = '{required : true}' data-required-msg = '请输入昵称' data-tel-msg = '请输入昵称' type="tel" placeholder="请输入昵称" class="nickName">
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item field">
+                                    <div class="content">
+                                        <i class = 'icon-lock'></i>
+                                        <div class="edit">
+                                            <input v-model = 'form.model.password' v-rules = '{required : true, maxlength : 18, minlength : 6}' data-required-msg = '设置密码（6-18位数字或字母）' :type="type" placeholder="设置密码（6-18位数字或字母）" class="password">
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                        <div class="button switch">
+                                            <input type="checkbox" name="switch" v-model = 'checked'>
+                                            <a class = 'button icon-attention'></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <sep-checkboxs>
+                                    <div class='button'>
+                                        <input value='1'  v-model = 'form.model.choise' v-rules = '{required : true}' class="choise" />
+                                        <i>
+                                        </i>
+                                        <small class="edit fz-medium fg-gray padding-near">
+                                            我已阅读并同意<b class="fg-red">《古美术商城用户注册协议》</b>
+                                        </small>
+                                    </div>
+                                </sep-checkboxs>
+                            </li>
+                            <!-- <li>
+                                <sep-checkboxs>
+                                    <div class='button'>
+                                        <input value='1' />
+                                        <i>
+                                        </i>
+                                        <small class="edit fz-medium fg-gray padding-near">
+                                            我已阅读并同意<b class="fg-red">《古美术商城用户注册协议》</b>
+                                        </small>
+                                    </div>
+                                </sep-checkboxs>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <sep-button :class = '{disable : 0 == form.status}' v-click = 'form.m_submit' class = 'red submit' text = '完成' wtext = '完成'></sep-button>
+                </div>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+    
+</form>

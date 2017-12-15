@@ -1,0 +1,87 @@
+.user-login .body {
+	background-color: #fff;
+}
+.user-login .top {
+	text-align: center;
+}
+.user-login .top .logo {
+	margin-top: 5%;
+	vertical-align: middle;
+}
+.user-login .loginbox {
+	text-align: center;
+}
+.user-login .types {
+	text-align: center;
+	margin-top: 30px;
+	border-radius: 30px;
+	border: 1px solid #D3D3D3;
+	display: inline-block;
+}
+.user-login .types .item {
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	width: 8rem;
+	float: left;
+	font-size: 14px;
+}
+.user-login .types .item.on {
+	background-color: #FF0E0D;
+	color: #fff;
+	border-radius: 30px;
+}
+
+.user-login .loginbox .layout {
+	margin-top: 20px;
+}
+.user-login .loginbox .layout .item {
+	margin: 10px 40px 20px 40px;
+	border-radius: 30px;
+	border: 1px solid #D3D3D3;
+}
+.user-login .loginbox .layout .content i {
+	display: inline-block;
+	text-align: center;
+	font-size: 18px;
+	margin-right: 10px;
+}
+
+.user-login .loginbox .layout > ul:before {
+	display: none;
+}
+.user-login .loginbox .layout > ul > li .item:before {
+	display: none;
+}
+
+.user-login .loginbox .submit {
+	margin: 10px 40px 20px 40px;
+	border-radius: 30px;
+	border: 1px solid transparent;
+	background-color: #FF0E0D;
+}
+.user-login .loginbox .submit.disable {
+	background-color: transparent;
+	border: 1px solid #D3D3D3;
+}
+.user-login .operation {
+	margin: 10px 40px;
+	text-align: left;
+}
+.user-login .operation .button {
+	display: inline-block;
+}
+.user-login .operation .button.findpwd {
+	float: right;
+}
+.user-login .operation .button.reg {
+	float: left;
+}
+
+
+.user-login .button.req-code.disable {
+	background-color:#eee;
+	color:#999;
+}
+
+

@@ -1,0 +1,51 @@
+.seller-add .submit {
+    margin: 10px 40px 20px 40px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    background-color: #FF0E0D;
+}
+.seller-add .submit.disable {
+    background-color: transparent;
+    border: 1px solid #D3D3D3;
+}
+
+.seller-add .layout > ul > li .item .op{
+    text-align: center;
+    width: 100%;
+    color: #aaa;
+    font-size: 18px;
+}
+/*.seller-add .button.radio{
+     margin-right: 5px; 
+     
+}*/
+.seller-add .button.radio small {
+    border-radius: 100%;
+    border: 1px solid #aaa;
+    margin-left: 0;
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-align: center;
+    line-height: 30px;}
+
+.seller-add .button.radio input[type=radio]:checked ~ small {
+    border-radius: 100%;
+    border: 1px solid #FF0E0D;
+    margin-left: 0;
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-align: center;
+    line-height: 30px;
+}
+.seller-add .theme-base .button.radio input[type=radio]:checked ~ small {
+    border-radius: 100%;
+    border: 1px solid #FF0E0D;
+    margin-left: 0;
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-align: center;
+    line-height: 30px;
+}

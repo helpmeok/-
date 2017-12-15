@@ -1,0 +1,112 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+            <div class='cover'>
+                <img :src='banner_url' width='100%' />
+            </div>
+            <div class='types'>
+                <div class='wrap allow-scroll'>
+                    <ul v-calc-width>
+                        <li>
+                            <a class='button ev-stop'>
+                                <input name='type' type='radio' value='' v-model='type' />
+                                <small>全部</small>
+                            </a>
+                        </li>
+                        <li v-for='el in list'>
+                            <a class='button ev-stop'>
+                                <input checked name='type' type='radio' :value='el.brandCode' v-model='type' />
+                                <small>{{el.brandName}}</small>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--
+                列表页
+            -->
+            <div class='list'>
+                <div class='wrap'>
+                    <sep-render :login="false">
+                        <section slot = 'empty'>
+                            <sep-empty text = '暂无藏品信息'></sep-empty>
+                        </section>
+                        <section slot='entity'>
+                            <!-- <ul>
+                                <li v-for="el in $model.list">
+                                    <div class='button' v-click='{method : m_push, args : el}'>
+                                        <div class='image'>
+                                            <img :src='el.mainImages' />
+                                        </div>
+                                        <div class='detail'>
+                                            <div class='t'>
+                                                <em class='singleline'>{{el.goodsName}}</em>
+                                            </div>
+                                            <div class='b flexbox'>
+                                                <div class='l primary'>
+                                                    <strong class='price fg-red'><small>￥</small>{{el.sellingPrice}}</strong>
+                                                </div>
+                                                <div class='r'>
+                                                    <small class='number'><i class = 'icon-attention'></i> {{el.zanNumber}}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul> -->
+                            <div class="product">
+                                <ul>
+                                    <li v-for='el in $model.list'>
+                                        <div class="button" v-click='{method : m_push, args : el}'>
+                                            <div class="media aa">
+                                                <img :src='el.mainImages' width="100%" height="150">
+                                            </div>
+                                            <div class="detail">
+                                                <em class="name">
+                                                    {{el.goodsName}}
+                                                </em>
+                                                <div class="other">
+                                                    <div class="l">
+                                                        <span class="price fg-red">
+                                                            <small>
+                                                                ￥
+                                                            </small>
+                                                            {{el.sellingPrice}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="r">
+                                                        <div class="flexbox">
+                                                            <small class="fg-gray primary fz-small">
+                                                                {{el.zanNumber}}
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <sep-empty v-else text="暂无商品" icon="icon-favor"></sep-empty>
+                            </div>
+                        </section>
+                    </sep-render>
+                </div>
+            </div>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

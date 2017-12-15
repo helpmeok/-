@@ -1,0 +1,485 @@
+<form class="viewbox" v-form='form'>
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<a back class="button"><i class = "icon-back"></i></a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+			</div>
+		</div>
+	</div>
+	
+	<div class='body'>
+		<sep-scroll>
+			<div class="layout">
+				<ul>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									商品图片:
+								</em>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<div class="edit" id="imageAdd">
+									<sep-files name='images' v-model='model.imageArray'></sep-files>
+								</div>
+							</div>
+						</div>
+					</li>
+					
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*货品来源:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="例如古玩城、拍卖行等" v-model="model.goodsSource" v-rules = '{required : true }' data-required-msg = '请填写货品来源'/>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*商品编号:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="商品编号" v-model='model.goodsCode'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*品牌专区:
+								</em>
+								<div class="edit isIphone" style="display: none;">
+									<select v-model="model.goodsBrand" >
+										<option value="" disabled>
+											--请选择--
+										</option>
+										<option v-for="item in brand" :value = "item.name">
+											{{item.name}}
+										</option>
+									</select>
+								</div>
+								
+								<div class="edit isAndroid" style="position: relative;left: 0;top: 0;height: 44px;" v-click="m_box_goodsBrand">
+									
+									<p class="select" style="height: 44px;line-height: 44px;text-align: center;">
+										--请选择--
+									</p>
+									
+									<input type="hidden" v-model="model.goodsBrand"/>
+								</div>
+								
+								<div class="mask-brand android-hide" style="display:none;position: absolute;left: 100px;top: 44px;z-index: 999;border:  1px solid lightgray;background: #FFFFFF;width: 202px;" >
+										<div :class="'brand'+i" v-for="(item,i) in brand" style="text-align: center;padding: 5px;position: relative;left: 0;top: 0;z-index: 9999;" v-click="{method:m_select_goodsBrand,args:'brand'+i}">
+										{{item.name}}
+									    </div>
+								    </div>
+							</div>
+							<div class="other">
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*年份:
+								</em>
+								<div class="edit isIphone" style="display: none;">
+									<select v-model='model.years'>
+										<option value="" disabled>
+											--请选择--
+										</option>
+										<option v-for="(item,i) in years" :value="i">
+											{{item.name}}
+										</option>
+									</select>
+								</div>
+								<div class="edit isAndroid" v-click="m_box_years">
+								
+									<p class="select" style="height: 44px;line-height: 44px;text-align: center;">
+										--请选择--
+									</p>
+									<input type="hidden" v-model="model.years"/>
+								</div>
+								<div class="mask-years android-hide" style="display:none;position: absolute;left: 100px;top: 44px;z-index: 999;border:  1px solid lightgray;background: #FFFFFF;width: 202px;" >
+										<div :class="'years'+i" v-for="(item,i) in years" style="text-align: center;padding: 5px;position: relative;left: 0;top: 0;z-index: 9999;" v-click="{method:m_select_years,args:'years'+i}">
+										{{item.name}}
+									    </div>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name select-box">
+									*品相:
+								</em>
+								<div class="edit isIphone" style="display: none;">
+									<select  v-model="model.grade">
+										<option value="" disabled>
+											--请选择--
+										</option>
+										<option v-for="(item,i) in grand" :value="i">
+											{{item.name}}
+										</option>
+									</select>
+								</div>
+								<div class="edit isAndroid" v-click="m_box_grand">
+									
+									<p class="select" style="height: 44px;line-height: 44px;text-align: center;">
+										--请选择--
+									</p>
+									<input type="hidden" v-model="model.grade"/>
+								</div>
+								<div class="mask-grand android-hide" style="display:none;position: absolute;left: 100px;top: 44px;z-index: 999;border:  1px solid lightgray;background: #FFFFFF;width: 202px;" >
+										<div :class="'grand'+i" v-for="(item,i) in grand" style="text-align: center;padding: 5px;position: relative;left: 0;top: 0;z-index: 9999;" v-click="{method:m_select_grand,args:'grand'+i}">
+										{{item.name}}
+									    </div>
+								    </div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*木箱费:
+								</em>
+								<div class="edit">
+									<input type="number" placeholder="木箱费" v-model='model.boxCost'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*宽度:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="宽度" v-model='model.width'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*重量
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="重量" v-model='model.weight'>
+								</div>
+                                <em class="name">
+                                    &#x3000;&#x3000;*单位:
+                                </em>
+                                <div class="edit isIphone"  style="display: none;">
+                                    <select v-model="model.unit">
+                                        <option value="" disabled>
+                                            --请选择--
+                                        </option>
+                                        <option v-for="(item,i) in unit" :value="i">
+                                            {{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="edit isAndroid" v-click="m_box_unit">
+									
+									<p class="select" style="width:80px;height: 44px;line-height: 44px;text-align: center;">
+										--请选择--
+									</p>
+									<input type="hidden" v-model="model.unit"/>
+								</div>
+								<div class="mask-unit android-hide" style="display:none;position: absolute;left: 220px;top: 44px;z-index: 999;border:  1px solid lightgray;background: #FFFFFF;width: 102px;" >
+										<div :class="'unit'+i" v-for="(item,i) in unit" style="text-align: center;padding: 5px;position: relative;left: 0;top: 0;z-index: 9999;" v-click="{method:m_select_unit,args:'unit'+i}">
+										{{item.name}}
+									    </div>
+								    </div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*材质:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="材质" v-model='model.material'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*商品物主:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="商品物主" v-model='model.owner'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*器形:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="器形" v-model='model.shape'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									其他尺寸:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="其他尺寸" v-model='model.birthday'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*商品名称:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="商品名称" v-model='model.goodsName'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*分类:
+								</em>
+								<div class="edit isIphone" style="display: none;">
+									<select v-model='model.classifyIdFirst'>
+										<option value="" disabled>
+											--请选择--
+										</option>
+										<option v-for="item in calssify" :value="item.value">
+											{{item.name}}
+										</option>
+									</select>
+								</div>
+								<div class="edit isAndroid" v-click="m_box_calssify">
+									
+									<p class="select" style="height: 44px;line-height: 44px;text-align: center;">
+										--请选择--
+									</p>
+									<input type="hidden" v-model="model.classifyIdFirst"/>
+								</div>
+								<div class="mask-calssify android-hide" style="display:none;position: absolute;left: 100px;top: 44px;z-index: 999;border:  1px solid lightgray;background: #FFFFFF;width: 202px;" >
+										<div :class="'calssify'+i" :id="item.value" v-for="(item,i) in calssify" style="text-align: center;padding: 5px;position: relative;left: 0;top: 0;z-index: 9999;" v-click="{method:m_select_calssify,args:'calssify'+i}">
+										{{item.name}}
+									    </div>
+								    </div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*价格:
+								</em>
+								<div class="edit">
+									<input type="number" placeholder="价格" v-model='model.goodsPrice'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*运费:
+								</em>
+								<div class="edit">
+									<input type="number" placeholder="运费" v-model='model.freight'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*长度:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="长度" v-model='model.length'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*高度:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="高度" v-model='model.height'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*工艺:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="请输入工艺" v-model='model.crafts'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*款识:
+								</em>
+								<div class="edit">
+									<input type="text" placeholder="请输入款识" v-model='model.style'>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<!--<li>-->
+						<!--<div class="item field">-->
+							<!--<div class="content">-->
+								<!--<em class="name">-->
+									<!--*是否库存:-->
+								<!--</em>-->
+								<!--<div class="edit">-->
+									<!--<select>-->
+										<!--<option>-->
+											<!--&#45;&#45;请选择&#45;&#45;-->
+										<!--</option>-->
+										<!--<option>-->
+											<!--有库存-->
+										<!--</option>-->
+										<!--<option>-->
+											<!--无库存-->
+										<!--</option>-->
+									<!--</select>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="other"></div>-->
+						<!--</div>-->
+					<!--</li>-->
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									*抽佣方式:
+								</em>
+								<div class="edit isIphone" style="display: none;">
+									<select v-model="model.rate">
+										<option value="" disabled>
+											--请选择--
+										</option>
+										<option v-for="(item,i) in rate" :value="i+1">
+											{{item.name}}
+										</option>
+									</select>
+								</div>
+								<div class="edit isAndroid" v-click="m_box_rate">
+									
+									<p class="select" style="height: 44px;line-height: 44px;text-align: center;">
+										--请选择--
+									</p>
+									<input type="hidden" v-model="model.rate"/>
+								</div>
+								<div class="mask-rate android-hide" style="display:none;position: absolute;left: 100px;top: 44px;z-index: 999;border:  1px solid lightgray;background: #FFFFFF;width: 202px;" >
+										<div :class="'rate'+i" v-for="(item,i) in rate" style="text-align: center;padding: 5px;position: relative;left: 0;top: 0;z-index: 9999;" v-click="{method:m_select_rate,args:'rate'+i}">
+										{{item.name}}
+									    </div>
+								    </div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<em class="name">
+									商品说明：
+								</em>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="item field">
+							<div class="content">
+								<div class="edit">
+									<textarea placeholder="请输入描述~" v-model="model.description"></textarea>
+									<span class="counter">0 / 200</span>
+								</div>
+							</div>
+							<div class="other"></div>
+						</div>
+					</li>
+				</ul>
+				<sep-button :class='{disable : 0 == form.status}' v-click='form.m_submit' class='red submit' text='上传商品' wtext='提交'></sep-button>
+				<sep-button :class='{disable : 0 == form.status}' v-click='m_my_back' class='gray reset' text='取消' wtext='取消' ></sep-button>
+			</div>
+		</sep-scroll>
+	</div>
+</form>

@@ -1,0 +1,56 @@
+<form class = "viewbox" v-form = 'form'>
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <div class="layout margin-top-far">
+                <ul>
+                    <li>
+                        <div class="button item link-arrow" push = 'user.update.password'>
+                            <div class="content">
+                                修改登录密码
+                            </div>
+                            <div class="other">
+                                
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout">
+                <ul>
+                    <li>
+                        <div class="button item link-arrow" push = 'address.list'>
+                            <div class="content">
+                                收货地址管理
+                            </div>
+                            <div class="other">
+                                
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="padding-far">
+                <sep-button v-click = 'form.m_submit' class = 'red submit border-radius-near'  v-click = 'm_logout' text = '退出登录' wtext = '退出登录...'>
+            </div>
+            </sep-button>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        
+    </div>
+    
+</form>

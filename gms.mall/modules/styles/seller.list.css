@@ -1,0 +1,34 @@
+/*.seller-list .top {
+    font-size: 14px;
+    color: #999;
+}
+.seller-list .state span:nth-child(2) {
+    float: right;
+}
+.seller-list .layout li {
+    overflow: hidden;
+    height: 134px;
+}
+.seller-list .scroll {
+    top: 35px;
+}
+.seller-list .body {
+    bottom: 50px;
+}
+.seller-list .list .checkbox {
+    padding: 20px 15px 15px 0;
+}
+.seller-list .footer .wrap {
+    background-color: #fff;
+}
+.seller-list .footer .r .button {
+    padding: 5px 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.seller-list .tab .item small {
+    font-size: 12px;
+}
+
+*/

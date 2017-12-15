@@ -1,0 +1,66 @@
+.user-reg-third .body {
+	background-color: #fff;
+}
+.user-reg-third .top {
+	text-align: center;
+}
+.user-reg-third .top .logo {
+	margin-top: 5%;
+	vertical-align: middle;
+}
+.user-reg-third .regbox {
+	text-align: center;
+}
+
+.user-reg-third .regbox .layout {
+	margin-top: 20px;
+}
+.user-reg-third .regbox .layout .item {
+	margin: 10px 40px 20px 40px;
+	border-radius: 30px;
+	border: 1px solid #D3D3D3;
+}
+.user-reg-third .regbox .layout .content {
+}
+.user-reg-third .regbox .layout .content i {
+	display: inline-block;
+	text-align: center;
+	font-size: 18px;
+	margin-right: 10px;
+}
+
+.user-reg-third .regbox .layout > ul:before {
+	display: none;
+}
+.user-reg-third .regbox .layout > ul > li .item:before {
+	display: none;
+}
+
+.user-reg-third .regbox .submit {
+	margin: 20px 40px 20px 40px;
+	border-radius: 30px;
+	border: 1px solid transparent;
+	background-color: #FF0E0D;
+}
+.user-reg-third .regbox .submit.disable {
+	background-color: transparent;
+	border: 1px solid #D3D3D3;
+}
+
+.user-reg-third .button.req-code.disable {
+	background-color:#eee;
+	color:#999;
+}
+
+.user-reg-third .button.checkbox small{
+	font-size: 14px;
+}
+
+
+.user-reg-third .button.checkbox i{
+	line-height: 23px;
+	margin-right: -13px;
+}
+.user-reg-third .button.checkbox i:before{
+	font-size: 20px;
+}

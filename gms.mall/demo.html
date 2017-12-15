@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset = 'utf-8' />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title></title>
+		<style type="text/css">
+			button {
+				height: 50px;
+				line-height: 50px;
+				width: 100%;
+				font-size: 18px;
+			}
+			textarea {
+				height: 200px;
+				width: 100%;
+				font-style: 20px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<textarea placeholder="config" id = 'config'></textarea>
+		
+		<button onclick = 'm_pay()'>
+			调取微信支付
+		</button>
+	</body>
+	<script type="text/javascript" src = 'http://zeptojs.com/zepto.js'></script>
+	<script type="text/javascript" src = 'http://res.wx.qq.com/open/js/jweixin-1.2.0.js'></script>
+	<script type="text/javascript">
+		window.m_pay = function() {
+			function _m_test_wecaht(args) {
+				function onBridgeReady(){
+				   WeixinJSBridge.invoke(
+				       'getBrandWCPayRequest', args,
+				       function(res){     
+				           if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+				           		alert('支付成功!') ;
+				           }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+				       }
+				   ); 
+				}
+				if (typeof WeixinJSBridge == "undefined"){
+				   if( document.addEventListener ){
+				       document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+				   }else if (document.attachEvent){
+				       document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+				       document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+				   }
+				}else{
+				   onBridgeReady();
+				}
+			}
+			var _config = $('#config').val() ;
+			_m_test_wecaht(JSON.parse(_config)) ;
+			// var _url = 'http://192.168.1.192:9999/gms/api/pay/weixinPay' ;
+			// $.ajax({
+			// 	type : 'post',
+			// 	url : _url,
+			// 	'Content-Type' : 'application/x-www-form-urlencoded',
+			// 	data : {"appId":"wxcafec248aa195a46","timeStamp":"1503297295","nonceStr":"0f9584ef30cf744417f8b205f418854d","package":"prepay_id=wx20170821143505cd81feadc40883504113","signType":"MD5","paySign":"22F93827A26A7BF8BC0C6A4A5E496762"},
+			// 	success : function(data) {
+			// 		// console.log(data) ;
+			// 		_m_test_wecaht(data.data) ;
+			// 	}
+			// }) ;
+			// o5hlCwKmdlaBkasm19760cPRsrfE
+		}
+	</script>
+</html>

@@ -1,0 +1,100 @@
+<form class="viewbox" v-form='form'>
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class="icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+
+            </div>
+        </div>
+    </div>
+    <div class='body'>
+        <sep-scroll>
+
+            <!--方法一：用render模板-->
+            <!--<sep-render name='default'>-->
+            <!--<section slot='entity' >-->
+            <!--<div class="layout margin-top-far">-->
+            <!--<ul>-->
+            <!--<li v-for="item in $model.list">-->
+            <!--<div class="item topalign">-->
+            <!--<div class="content">-->
+            <!--<div class="props">-->
+            <!--<div class="prop">-->
+            <!--<div class="l">-->
+            <!--提现-->
+            <!--</div>-->
+            <!--<div class="r">-->
+            <!--{{item.amount}}-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="prop">-->
+            <!--<div class="l">-->
+            <!--{{item.applyTime}}-->
+            <!--</div>-->
+            <!--<div class="r">-->
+
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</section>-->
+            <!--</sep-render>-->
+
+
+            <!--方法二：调用在methods自定义方法获取-->
+            <div class="layout margin-top-far">
+                <ul>
+                    <li v-for="item in detail">
+                        <div class="item topalign" v-if="null != detail && 0 != detail.length">
+                            <div class="content">
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l">
+                                            类型：{{item.detailType}}
+                                        </div>
+                                        <div class="r">
+                                            金额：{{item.amount}}
+                                        </div>
+                                    </div>
+                                    <div class="prop">
+                                        <div class="l">
+                                            申请时间：{{item.applyTime}}
+                                        </div>
+                                        <div class="r">
+
+                                        </div>
+                                    </div>
+                                    <div class="prop">
+                                        <div class="l">
+                                            结果：{{item.success}}
+                                        </div>
+                                        <div class="r">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <sep-empty v-else text='暂时没有提现记录' icon="icon-favor">
+                            暂时没有提现记录～
+                        </sep-empty>
+                    </li>
+                </ul>
+            </div>
+
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+
+</form>

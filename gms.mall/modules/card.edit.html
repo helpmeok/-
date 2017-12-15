@@ -1,0 +1,131 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class ="icon-back fg-black"></i></a>
+            </div>
+            <div class="c">
+                <em>添加银行卡</em>
+            </div>
+            <div class="r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll :style="{bottom:'50px'}">
+            
+                <form v-form = 'form'>
+                    <sep-render>
+                        <div slot = 'entity'>
+                            <div class="layout">
+                                <ul>
+                                    <li>
+                                        <div class = "item field select">
+                                            <div class = "content">
+                                                <em class = "name">
+                                                    城市
+                                                </em>
+                                                <div class = "edit">
+                                                    <select v-rules = '{required : true}' data-required-msg = '请选择省份'  v-model = "$model.province" @change='m_choose_province'>
+                                                        <option value = "">请选择</option>
+                                                        <option v-for = "region in regions" :value = "region.name">
+                                                            {{region.name}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class = "edit">
+                                                    <select v-rules = '{required : true}' data-required-msg = '请选择城市'  v-model = "$model.city" @change='m_choose_city'>
+                                                        <option value = "">请选择</option>
+                                                        <option v-for = "city in citys" :value = "city.name">
+                                                            {{city.name}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class = "edit">
+                                                    <select v-rules = '{required : true}' data-required-msg = '请选择地区'  v-model = "$model.district">
+                                                        <option value = "">请选择</option>
+                                                        <option v-for = "area in areas" :value = "area">
+                                                            {{area}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item field">
+                                            <div class="content">
+                                                <em class="name">
+                                                    银行:
+                                                </em>
+                                                <div class="edit">
+                                                    <select v-rules = '{required : true}' data-required-msg = '请选择银行' v-model = "$model.banktype">
+                                                        <option value="">请选择</option>
+                                                        <option v-for = "el in bank_list">{{el.bankName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="other icon-right">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item field">
+                                            <div class="content">
+                                                <em class="name">
+                                                    支行:
+                                                </em>
+                                                <div class="edit">
+                                                    <input v-rules = '{required : true}' data-required-msg = '支行不可为空' v-model="$model.subbranch" type="text" placeholder="请输入支行信息">
+                                                </div>
+                                            </div>
+                                            <div class="other">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item field">
+                                            <div class="content">
+                                                <em class="name">
+                                                    卡号:
+                                                </em>
+                                                <div class="edit">
+                                                    <input @input = "m_auto_format_card_code" v-rules = '{required : true}' data-required-msg = '卡号不可为空' v-model="$model.cardcode" type="text" placeholder="请输入卡号">
+                                                </div>
+                                            </div>
+                                            <div class="other">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item field">
+                                            <div class="content">
+                                                <em class="name">
+                                                    持卡人:
+                                                </em>
+                                                <div class="edit">
+                                                    <input v-rules = '{required : true}' data-required-msg = '持卡人不可为空' v-model = "$model.cardholder" type="text" placeholder="请输入持卡人">
+                                                </div>
+                                            </div>
+                                            <div class="other">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </sep-render>
+                </form>
+            
+            <div slot="bottom">
+                <sep-dev></sep-dev>
+            </div>
+        </sep-scroll>
+        <div class = "footer center" >
+            <div class = "bg-white">
+                <sep-button class = 'submit save' text = '保存'  wtext = '保存中..' v-click="form.m_submit" ></sep-button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+
+	<div class="body">
+		<sep-scroll :style="'1'==state ? {bottom : '50px'} : '' ">
+			<sep-render>
+				<section slot = 'entity'>
+					<ul>
+						<li v-for = 'el in date' >
+							<sep-fold :single="true" >
+								<div class='item'>
+									<h2 class='button'>
+										<em>
+											{{el.name}}
+										</em>
+										<b>
+										</b>
+									</h2>
+									<div class='box'>
+										<div class='layout'>
+											<ul>
+												<li>
+													<div class='button item link-arrow fg-gray'>
+														<div class='content'>
+															{{el.centent}}
+														</div>
+														<div class='other'></div>
+													</div>
+												</li>
+												<li>
+													<div class=' item link-arrow'>
+														<div class='media'></div>
+														<div class='content'>
+														</div>
+														<!-- <div class='other flexbox'>
+															<a href="javascript:;" class="button other fz-medium fg-gray margin-left">
+									                            <i class="icon-appreciatefill"></i>
+									                            有帮助
+									                        </a>
+									                        <a href="javascript:;" class="button other fz-medium fg-gray margin-left">
+									                            <i class="icon-appreciatefill"></i>
+									                            去提问
+									                        </a>
+														</div> -->
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</sep-fold>
+						</li>
+					</ul>
+				</section>
+			</sep-render>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+		<div class="footer" v-if="1 == state">
+			<div class="wrap flexbox centeralign">
+			    <div class="l primary blue"><a class="button cool" push = "help.add" >我要反馈</a></div>
+			    <div class="r primary blue"><a class="button cool" push = "help.list" >我的提问</a></div>
+			</div>
+		</div>
+
+	</div>
+</div>
+

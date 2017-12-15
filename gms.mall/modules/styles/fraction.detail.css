@@ -1,0 +1,33 @@
+.fraction-detail .tablebox {
+	padding: 10px;
+}
+.fraction-detail table {
+	width: 100%;
+	text-align: center;
+	background-color: #fff;
+	border-collapse: collapse;
+}
+.fraction-detail table tr {
+}
+.fraction-detail .total-score {
+	background-color: #eee;
+	font-weight: bold;
+	padding: 15px;
+}
+.fraction-detail table tr td {
+	padding: 5px;
+	border:1px solid #222;
+	vertical-align: middle;
+}
+.fraction-detail table tbody td:first-child {
+	background-color: #ccc;
+}
+.fraction-detail .button.checkbox {
+	display: block;
+}
+.fraction-detail .swiper-slide {
+	background-color: #222;
+	height: 253px;
+	overflow: hidden;
+	line-height: 253px;
+}

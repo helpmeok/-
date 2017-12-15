@@ -1,0 +1,45 @@
+<div class = "viewbox">
+	<!-- <div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				
+			</div>
+			<div class = "c">
+				<em></em>
+			</div>
+			<div class = "r">
+				
+			</div>
+		</div>
+	</div> -->
+	<div class = 'body'>
+		<sep-scroll :downpull_lock = 'true'>
+			<div v-if = 'len' class = 'number progress'>
+				<b>{{index + 1}} / {{len}}</b>
+			</div>
+			<div class = 'list'>
+				<div class = 'wrap'>
+					<sep-render :login = "false">
+						<section slot = 'init'>
+							<small class = 'loader'></small>
+						</section>
+						<section slot = 'entity'>
+							<sep-swiper :zoom = "true">
+								<div v-for = 'el in $model.list' class="swiper-slide">
+									<div class = 'swiper-zoom-container'>
+										<img :data-src="el.url" class="swiper-lazy">
+						            	<div class="swiper-lazy-preloader"></div>
+									</div>
+						        </div>
+							</sep-swiper>
+						</section>
+					</sep-render>
+				</div>
+			</div>
+		</sep-scroll>
+	</div>
+	<div class = 'footer'>
+		<a back class = "button close"><i class = "icon-close"></i></a>
+	</div>
+</div>
+

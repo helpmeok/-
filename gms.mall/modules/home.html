@@ -1,0 +1,256 @@
+<div class="viewbox">
+	<a :href="'tel:'+tel" id="telPhone" >
+		<img src="../../gms.mall/modules/images/telphone.png" style="z-index: 888;"/ id="telPhone-img">
+	</a>
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r"></div>
+		</div>
+	</div>
+	<div class='body'>
+		<sep-scroll>
+			<div class='topbar'>
+				<div class='wrap flexbox centeralign'>
+					<div class='l'>
+						<!-- <a class = 'icon-more button'></a> -->
+					</div>
+					<div class='c primary'>
+						<a class='button' push='search'>
+							<i class='icon-search'></i>
+							<small>选古美术就对了</small>
+						</a>
+					</div>
+					<div class='r'>
+						<a push='msg.list' class='icon-comment button'></a>
+					</div>
+				</div>
+			</div>
+			<!-- 首页轮播 -->
+			<sep-render :login='false' name='ads'>
+				<section slot='entity'>
+					<sep-swiper class='swiper' :autoplay="3000" :loop="true" :pagination="true">
+						<div :key='index' v-for='(el, index) in renders.ads.model.list' class="swiper-slide">
+							<img class="lazy" width='100%'  height="180px" :data-original="el.imgUrl"/>
+						</div>
+					</sep-swiper>
+					<!--<div class = 'radian'></div>-->
+				</section>
+			</sep-render>
+			<!-- 商品分类 -->
+			<sep-render :login='false' name='category'>
+				<section slot='entity'>
+					<div class="category">
+						<div class="wrap">
+							<ul>
+								<li v-for='(el,i) in renders.category.model.list' :key="i">
+									<a class="button" v-click='{method : m_category, args : el}'>
+										<i>
+											<img class="lazy"  alt="" width="100%" :data-original="el.classifyPic"/>
+										</i>
+										<small>
+											{{el.classifyName}}
+										</small>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</sep-render>
+			<!-- 商、专家中心 -->
+			<sep-render :login='false' name='out'>
+				<section slot='entity'>
+					<div class='aicv'>
+						<div class="product">
+							<ul>
+								<li v-for='(el,i) in renders.out.model.list' :key="i">
+									<div class="button" v-click='el.onclick'>
+										<div class="media">
+											<img class="lazy"  width="100%" :data-original="el.img">
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</sep-render>
+			<!-- ===热门资讯=== -->
+			<sep-render :login='false' name='hot'>
+				<section slot='entity'>
+					<div class="layout margin-top-far">
+						<ul>
+							<li>
+								<div class="button item ">
+									<!-- link-arrow -->
+									<!-- v-click='m_hot_detail' -->
+									<i class="bg-red me"></i>
+									<div class="content">
+										热门资讯
+									</div>
+									<div class="other">
+										<!-- 更多 -->
+									</div>
+								</div>
+							</li>
+							<li v-for="el in renders.hot.model.list">
+								<div class="button item link" v-click='{method : m_content, args : el}'>
+									<div class="media large">
+										<img class="lazy"  :data-original="el.newsPic">
+									</div>
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l doubleline fg-black fz-medium ">
+													{{el.title}}
+												</div>
+												<div class="r">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="other">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</sep-render>
+			<!-- ===优选精品=== -->
+			<sep-render :login='false' name='fine'>
+				<section slot='entity'>
+					<div class="layout margin-top-far">
+						<ul>
+							<li>
+								<div class="button item link-arrow" v-click='m_fine'>
+									<i class="bg-red me"></i>
+									<div class="content" >
+										优选精品
+									</div>
+									<div class="other">
+										更多
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="category">
+						<div class="wrap">
+							<div class="product">
+								<ul>
+									<li v-for='el in renders.fine.model.list'>
+										<div class="button" v-click="{method:m_fine_push, args : el}">
+											<div class="media">
+												<div class="picbax">
+													<img class="lazy"  width="100%" height="70" :data-original="el.url">
+												</div>
+											</div>
+											<div class="detail">
+												<em class="name fg-black">
+					                                {{el.goodsName}}
+					                            </em>
+												<div class="other">
+													<div class="l">
+														<span class="fz-small fg-gray singleline">
+					                                        {{el.goodsClassify}}
+					                                    </span>
+													</div>
+													<div class="r">
+														<div class="flexbox">
+															<small class="fg-red primary fz-small">
+					                                            {{el.goodsPrice}}元
+					                                        </small>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+			</sep-render>
+			<!-- ===活动频道=== -->
+			<!-- <sep-render :login = 'false' name = 'act' >
+				<section slot = 'entity'>
+					<div class="layout margin-top-far">
+						<ul>
+							<li>
+								<div class="button item ">
+									<i class="bg-red me"></i>
+									<div class="content">
+										活动频道
+									</div>
+									<div class="other">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="area">
+						<div class = 'wrap'>
+							<ul v-for = 'el in renders.act.model.list'>
+								<li>
+									<div class = 'button item' v-click='m_load'>
+										<img :src="el.img" width="100%">
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</sep-render> -->
+			<!-- 分类列表 -->
+			<sep-render :login='false' name='goodslist'>
+				<section slot='entity'>
+					<div class="area">
+						<div class='wrap'>
+							<em>
+								<small></small> 精品分类 <small></small>
+							</em>
+							<ul v-for='el in renders.goodslist.model.list'>
+								<li>
+									<div v-click="{method : m_push, args : el.brandCode}" class='button item'>
+										<small>
+											{{el.brandName}}
+										</small>
+										<img class="lazy"  :data-original="el.images"/>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</sep-render>
+			<!-- 底部说明 -->
+			<sep-render name='foot' :login='false'>
+				<section slot='entity'>
+					<div class='area'>
+						<div class='wrap'>
+							<ul class="flexbox">
+								<li class="primary" v-for='el in renders.foot.model.list' v-click='el.onclick'>
+									<div class="fg-red ss">
+										<i :class="el.icom"></i> {{el.txt}}
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</sep-render>
+
+			<section slot="bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+		<sep-activity></sep-activity>
+	</div>
+</div>

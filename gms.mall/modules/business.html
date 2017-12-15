@@ -1,0 +1,39 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                <a back class="button"><i class = "icon-close"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll :downpull_lock = 'true'>
+            <div class="business">
+                <div class="typeimg">
+                    <img :src="images">  
+                </div>
+                <div class="titleworld" v-if='1 == id'>
+                    <p class="p">恭喜您成功申请为古美术的预备商家</p>
+                    <p class="p margin-top-far">
+                        接下来将有三个月的考核期，我们将从
+                        商品质量、销售量、购买评论三方面对
+                        您的商铺进行考核，考核通过后将转为
+                        正式商家，可以使用我们享受我们提供
+                        的商铺和商品的多样化管理工具，享受
+                        数据智库、流量推广等服务。
+                    </p>
+                </div>
+                <div class="titleworld" v-if='2 == id'>
+                    <p class="p" style="padding : 0 30px">恭喜您“申请成为专家”的资料已提交成功，请等待审核！</p>
+                </div>
+                <a class="red shuer"  v-click='m_sure'>确定</a>
+            </div>
+        </sep-scroll>
+    </div>
+</div>

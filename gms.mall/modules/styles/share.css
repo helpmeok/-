@@ -1,0 +1,7 @@
+.category li {
+    position: relative;
+    width: 33%;
+    display: block;
+    float: left;
+    text-align: center;
+}

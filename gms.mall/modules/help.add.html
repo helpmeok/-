@@ -1,0 +1,57 @@
+<form class = "viewbox" v-form = 'form'>
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+
+			</div>
+		</div>
+	</div>
+	<div class="body">
+		<sep-scroll >
+			<div class="layout">
+				<ul>
+					<li>
+						<div class="item field topalign">
+							<div class="content">
+								<div class="edit">
+									<textarea placeholder="点击输入您的问题，我们将尽快给您回复！" v-model = 'form.model.requestion' maxlength="200">
+									</textarea>
+									<span class="counter">
+										{{form.model.requestion.length}} / 200
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="files">
+				    <div class="wrap">
+				        <ul>
+				            <li>
+				                <div class="item button">
+				                    <p class="op" v-if='null === form.model.images'>图片</p>
+				                    <img :src="form.model.images" width="100%" height="100%" v-else>
+				                    <sep-file v-model='form.model.images'></sep-file>
+				                </div>
+				            </li>
+				        </ul>
+				    </div>
+				</div>
+			</div>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+		<div class = "footer center" >
+		    <div class = "bg-white">
+		        <sep-button class = 'submit save' text = '提交' wtext = "提交中" v-click = 'form.m_submit'></sep-button>
+		    </div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,33 @@
+.order-list .top {
+    font-size: 14px;
+    color: #999;
+}
+.order-list .state span:nth-child(2) {
+    float: right;
+}
+.order-list .layout li {
+    overflow: hidden;
+    height: 134px;
+}
+.order-list .scroll {
+    top: 35px;
+}
+.order-list .body {
+    bottom: 50px;
+}
+.order-list .list .checkbox {
+    padding: 20px 15px 15px 0;
+}
+.order-list .footer .wrap {
+    background-color: #fff;
+}
+.order-list .footer .r .button {
+    padding: 5px 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.order-list .tab .item small {
+    font-size: 12px;
+}
+

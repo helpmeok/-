@@ -1,0 +1,53 @@
+<div class = "viewbox">
+	<div class = "header">
+		<div class = "wrap">
+			<div class = "l">
+				<a back class = "button"><i class = "icon-back"></i></a>
+			</div>
+			<div class = "c">
+				<em>{{title}}</em>
+			</div>
+			<div class = "r">
+			</div>
+		</div>
+	</div>
+	<div class="body">
+		<sep-scroll>
+			<sep-render>
+				<section slot = 'entity'>
+					<ul>
+						<li v-for = 'el in $model.list'>
+							<div class="layout">
+								<p class="fz-medium text"><small></small> {{el.createDate | date('yy年MM月dd日') }}<small></small></p>
+								<ul>
+									<li>
+										<div class="button item ">
+											<div class="content">
+												<em class=>{{el.requestion}}</em>
+											</div>
+											<div class="other">
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="button item ">
+											<div class="content">
+												<img :src="el.images">
+											</div>
+											<div class="other">
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</section>
+			</sep-render>
+			<section slot = "bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+</div>
+

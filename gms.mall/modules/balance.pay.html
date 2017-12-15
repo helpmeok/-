@@ -1,0 +1,124 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                <a back class="button"><i class = "icon-close"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll :downpull_lock = 'true'>
+            <!-- 请求验证码 第一步(start) -->
+            <section v-if = '1 == step'>
+                <form class="layout" v-form = 'form_step_1'>
+                    <ul>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <div class="edit">
+                                        <input type="text" class = 'mobile' placeholder="请输入您的手机号码" v-model = 'form_step_1.model.mobile' v-rules = '{tel : true}' data-tel-msg = '手机格式无效'>
+                                    </div>
+                                </div>
+                                <div class="other">
+                                    <span class = 'vd-notify' v-html = 'form_step_1.msgs.mobile'></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <div class="edit">
+                                        <input type="text" placeholder="请输入验证码" v-model = 'form_step_1.model.code' v-rules = '{required : true}' data-required-msg = '请输入验证码'>
+                                    </div>
+                                </div>
+                                <div class="other">
+                                    <sep-button class="red medium mini border-radius-far margin-right-near" :wtext = 'wtext' :loading = 'false' text = '发送验证码' v-click = 'm_req_code'>
+                                        
+                                    </sep-button>
+                                    <span class = 'vd-notify' v-html = 'form_step_1.msgs.code'></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+                 <div class = 'flexbox'>
+                    <a class = 'button default fg-red primary' back>取消</a>
+                    <a class = 'button default fg-red primary' :class = '{disable : !form_step_1.status}' v-click ='form_step_1.m_submit'>确认</a>
+                </div>
+            </section>        
+            <!-- 请求验证码 第一步(end) -->
+            <!-- 请求验证码 第二步(start) -->
+            <section v-if = '2 == step'>
+                <form class="layout" v-form = 'form_step_2'>
+                    <ul>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <div class="edit">
+                                        <input type="password" placeholder="设置六位数字密码" v-model = 'form_step_2.model.password' v-rules = '{required : true}' data-required-msg = '请输入六位数字密码'>
+                                    </div>
+                                </div>
+                                <div class="other">
+                                  
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <div class="edit">
+                                        <input type="password" placeholder="确认支付密码" v-model = 'form_step_2.model.repassword' v-rules = '{required : true}' data-required-msg = '请输入确认支付密码'>
+                                    </div>
+                                </div>
+                                <div class="other">
+                                   
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+                 <div class = 'flexbox'>
+                    <a class = 'button default fg-red primary' back>取消</a>
+                    <a class = 'button default fg-red primary' :class = '{disable : !form_step_2.status}' v-click ='form_step_2.m_submit'>确认</a>
+                </div>
+            </section>        
+            <!-- 请求验证码 第二步(end) -->
+            <!-- 请求验证码 第三步(start) -->
+            <section v-if = '3 == step'>
+                <form class="layout" v-form = 'form_step_3'>
+                    <ul>
+                        <li>
+                            <div class="item">
+                                <span class = 'fz-medium'>支付金额：<small class = 'fg-red'>{{total}}元</small></span>
+                                <span class = 'fz-medium'>可用余额：<small class = 'fg-red'>{{balance}}元</small></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item field">
+                                <div class="content">
+                                    <div class="edit">
+                                        <input type="password" placeholder="请输入支付密码" v-model = 'form_step_3.model.password'  v-rules = '{required : true}' data-required-msg = '请输入支付密码'>
+                                    </div>
+                                </div>
+                                <div class="other">
+                                  
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+                 <div class = 'flexbox'>
+                    <a class = 'button default fg-red primary' back v-click = 'm_cancel'>取消</a>
+                    <a class = 'button default fg-red primary' :class = '{disable : !form_step_3.status}' v-click ='form_step_3.m_submit'>确认</a>
+                    
+                </div>
+            </section>        
+            <!-- 请求验证码 第三步(end) -->
+        </sep-scroll>
+    </div>
+</div>

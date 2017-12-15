@@ -1,0 +1,212 @@
+<div class="viewbox">
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    <form v-form='form'>
+        <sep-window title='请完善个人信息'>
+            <div class="layout">
+                <ul>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                    真实姓名
+                                </em>
+                                <div class="edit">
+                                    <input v-rules='{required : true}' data-required-msg='请输入联系人' v-model='form.model.name' type="text" placeholder="请输入联系人">
+                                </div>
+                            </div>
+                            <div class="other">
+                                <span class='vd-notify' v-html='form.msgs.name'></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                    身份证号
+                                </em>
+                                <div class="edit">
+                                    <input v-rules='{required : true,minlength : 16,maxlength : 18}' v-model='form.model.id' type="text" data-required-msg='请输入身份证号' data-tel-msg='身份证号格式无效' placeholder="请输入身份证号">
+                                </div>
+                            </div>
+                            <div class="other">
+                                <span class='vd-notify' v-html='form.msgs.id'></span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class='padding-far'>
+                <sep-button v-click='form.m_submit' text='保存' wtext='请稍后...' class='submit default red border-radius-near'></sep-button>
+            </div>
+        </sep-window>
+    </form>
+    <div class='body'>
+        <sep-scroll>
+            <div v-if='1 == memberType' class="top">
+                <div class="wrap">
+                    <table width="100%" height='108px'>
+                        <thead>
+                            <tr>
+                                <th>任务</th>
+                                <th>金额</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>可提成奖励</td>
+                                <td>
+                                    <span>{{applyMoney}}元</span><a class="extract" v-click='m_pop_on'>提现</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>提成奖励</td>
+                                <td>
+                                    <span>{{applyMoney}}元</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>推荐好友</td>
+                                <td>{{ds.recommendNum}}人</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="bottom margin-top-far" v-if='1 == memberType'>
+                <table width="100%" height='108px'>
+                    <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>金额(元)</th>
+                            <th>详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for = 'el in ds.recommendOrder'>
+                            <td class="fz-medium" style=" vertical-align :left;text-align:center;padding: 0;">{{el.memberName}}</td>
+                            <td style="padding: 0;">
+                                <span >{{el.rewardMoney}}</span>
+                            </td>
+                            <td style="padding: 0;">
+                                <p v-click = "{method : m_push, args : el}">订单号：{{el.orderNo}}</p>
+                                <p>{{el.orderTime}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div v-if='2 == memberType' class="expert">
+                <!-- 专家用户 -->
+                <div class="wrap">
+                    <table width="100%" height='108px'>
+                        <thead>
+                            <tr>
+                                <th>任务</th>
+                                <th>数量单位</th>
+                                <th>合计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>提成奖励</td>
+                                <td>
+                                    {{ds.recommendMoney}}元
+                                </td>
+                                <td rowspan="2">
+                                    <span>{{ds.totalMoney}}元</span>
+                                    <a class="extract" v-click='m_pop_on'>提现</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>平分奖励</td>
+                                <td>{{ds.scoreMoney}}人</td>
+                            </tr>
+                            <tr>
+                                <td>推荐好友</td>
+                                <td>{{ds.recommendNum}}人</td>
+                                <td>{{ds.recommendNum}}人</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class='tab red margin-top-far' v-if='2 == memberType'>
+                <div class='wrap'>
+                    <div class='button'>
+                        <input type='radio' name='radio' checked='checked' value="1" v-model='status' />
+                        <div class='item'>
+                            <small>
+                                提成奖励明细
+                            </small>
+                        </div>
+                    </div>
+                    <div class='button'>
+                        <input type='radio' name='radio' value="0" v-model='status' />
+                        <div class='item'>
+                            <small>
+                                评价奖励明细
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom" v-if='2 == memberType && 1 == status'>
+                <table width="100%" height='108px'>
+                    <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>金额(元)</th>
+                            <th>详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for = 'el in ds.recommendOrder'>
+                            <td class="fz-medium">{{el.memberName}}</td>
+                            <td>
+                                <span>{{el.rewardMoney}}</span>
+                            </td>
+                            <td>
+                                <p v-click = "{method : m_push, args : el}">订单号：{{el.orderNo}} </p>
+                                <p>{{el.orderTime}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bottom" v-if='2 == memberType && 0 == status'>
+                <table width="100%" height='108px'>
+                    <thead>
+                        <tr>
+                            <th>售出奖励(元)</th>
+                            <th>详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for = 'el in ds.scoreOrder'>
+                            <td class="fz-medium">{{el.rewardMoney}}元</td>
+                            <td>
+                                <p v-click = "{method : m_push, args : el}">订单号：{{el.orderNo}}</p>
+                                <p>{{el.orderTime}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

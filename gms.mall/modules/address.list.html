@@ -1,0 +1,70 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <sep-render>
+                <section slot = 'entity'>
+                    <div class="layout">
+                        <ul>
+                            <li v-for = 'el in $model.list'>
+                                <div class="item link merge button" v-click = '{method : m_choose, args : el}'>
+                                    <div class="radio button margin-right-15px">
+                                        <input type="radio" :checked="el.id == chooseid" name = 'address-list-radio'>
+                                        <i>
+                                        </i>
+                                    </div>
+                                    <div class="content">
+                                        <div class="props">
+                                            <div class="prop">
+                                                <div class="l">
+                                                    {{el.addressee}} <strong>({{el.mobile}})</strong>
+                                                    <label v-if = 'el.setDefault' class="label fg-white bg-red fz-small margin-left-near">
+                                                        默认地址
+                                                    </label>
+                                                </div>
+                                                <div class="r">
+                                                </div>
+                                            </div>
+                                            <div class="prop">
+                                                <div class="l">
+                                                    <small class="fg-gray">
+                                                        {{el.addressDetail}}
+                                                    </small>
+                                                </div>
+                                                <div class="r">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                        <a v-click = '{method : m_address_edit, args : el}' class="button ev-stop fg-gray icon-write fz-18px padding-near">
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </sep-render>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+    <div class = 'footer'>
+        <a push = 'address.edit' class = 'button default red margin-far border-radius-near'>新增地址</a>
+    </div>
+    
+</div>

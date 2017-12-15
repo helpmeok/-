@@ -1,0 +1,36 @@
+.goods-list .list ul {
+    -moz-column-count:2; /* Firefox */
+    -webkit-column-count:2; /* Safari 和 Chrome */
+    column-count:2;
+    -moz-column-gap: 1em;
+  	-webkit-column-gap: 1em;
+  	column-gap: 1em;
+}
+.goods-list .list ul li {
+	overflow: hidden;
+	break-inside: avoid;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.05);
+    margin-bottom: 10px;
+}
+.goods-list .list .wrap {
+	padding: 10px;
+}
+.goods-list .list ul li .t {
+	padding: 5px 10px;
+}
+.goods-list .list ul li .t em {
+	font-size: 15px;
+	color: #222;
+}
+.goods-list .list ul li .price {
+	font-size: 18px;
+}
+.goods-list .list ul li .b {
+	padding: 5px 10px;
+}
+.goods-list .list ul li .b i {
+	vertical-align: middle;
+	font-size: 14px;
+}

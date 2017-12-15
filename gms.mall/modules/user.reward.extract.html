@@ -1,0 +1,138 @@
+<form class="viewbox" v-form='form'>
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class="icon-back"></i></a>
+                <!--<a @click = "m_my_back" class="button"><i class="icon-back"></i></a>-->
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+
+            </div>
+        </div>
+    </div>
+
+    <div class='body'>
+        <sep-scroll>
+            <div class="layout margin-top-far">
+                <ul>
+                    <li>
+                        <div class="button item">
+                            <div class="content">
+                                提现金额(元)：
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                        <div class="item field">
+                            <div class="content">
+                                <div class="edit">
+                                    <input type="text" v-model="form.model.money" placeholder="提现金额，每笔不小于100元"
+                                           v-rules='{required : true}'>
+                                    <!--<input type="text" v-rules='{required : true}' v-model='form.model.money' placeholder="提现金额，每笔不小于100元">-->
+                                </div>
+                            </div>
+                            <div class="other">
+
+                            </div>
+                        </div>
+                        <div class="margin-top-far">
+                            <p style="padding: 0px 15px 10px 15px;">当前奖励余额{{applyMoney}}元</p>
+                        </div>
+                        <div class="margin-top-far">
+                            <div class='layout'>
+                                <ul>
+                                    <li>
+                                        <div class='item field'>
+                                            <div class='content'>
+                                                <em class='name'>提现去向</em>
+                                                <div class='edit'>
+                                                    <sep-radios v-model="applyType">
+                                                        <!--<div class='button'>-->
+                                                            <!--<input name="applyType" value='2' id="valueOne"-->
+                                                                   <!--@click.stop="m_get_value_2"-->
+                                                                   <!--:checked="checked_value==2"/><i></i>-->
+                                                            <!--<small>账号余额</small>-->
+                                                        <!--</div>-->
+                                                        <!--<div class='button'>-->
+                                                            <!--<input name="applyType" value='1' id="valueTwo"-->
+                                                                   <!--@click.stop="m_get_value_1"-->
+                                                                   <!--:checked="checked_value==1"><i></i>-->
+                                                            <!--<small>银行卡</small>-->
+                                                        <!--</div>-->
+
+                                                        <div class='button'>
+                                                            <input value='2'/>
+                                                            <i></i>
+                                                            <small>账号余额</small>
+                                                        </div>
+                                                        <div class='button'>
+                                                            <input value='1'/>
+                                                            <i></i>
+                                                            <small>银行卡</small>
+                                                        </div>
+
+                                                    </sep-radios>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout" v-if="'1' == applyType" >
+                <ul>
+                    <li>
+                        <div class="button item link-arrow">
+                            <div class="media large">
+                                <img src="">
+                            </div>
+                            <div class="content">
+                                <div class="edit" v-if="bank_list_length">
+                                    <select v-rules='{required : true}' data-required-msg='请选择银行' v-model="form.model.memberBankCardId">
+                                        <option value="">请选择</option>
+                                        <option v-for="item in bank_list" :value="item.id">{{item.bankType}}({{item.cardNo}})</option>
+                                    </select>
+                                </div>
+
+                                <div class="props" @click="m_push" v-else>
+                                    <div class="prop">
+                                        <div class="l">
+                                            请绑定银行卡
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                    <div class="prop">
+                                        <div class="l number">
+
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class='padding-far'>
+                <!--<sep-button :class='{disable : 0 == form.status}' v-click='form.m_submit' class='red submit border-radius-near' text='确认提现' wtext='确认提现...'></sep-button>-->
+                <sep-button v-click='form.m_submit' text='确认提现' wtext='确认提现...'
+                            class='submit default red border-radius-near'></sep-button>
+            </div>
+            <section slot="bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+
+    </div>
+
+</form>

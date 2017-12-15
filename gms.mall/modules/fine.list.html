@@ -1,0 +1,46 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <div class="layout margin-top-far">
+                <ul>
+                    <li v-for = 'el in list'>
+                        <div class="button item link" v-click="{method : m_push, args : el}" >
+                            <div class="media large">
+                                <img :src="el.url">
+                            </div>
+                            <div class="content">
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l">
+                                            {{el.goodsName}}
+                                        </div>
+                                        <div class="r">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+</div>

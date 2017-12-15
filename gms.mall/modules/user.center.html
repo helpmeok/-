@@ -1,0 +1,281 @@
+<div class="viewbox">   
+	<div class="header">
+		<div class = 'wrap'>
+			<div class="l">
+				
+			</div>
+			<div class="c">
+				<em>
+					我的
+				</em>
+			</div>
+			<div class="r">
+				<a class = 'icon-comment button' push = 'msg.list'></a>
+			</div>
+		</div>
+	</div>
+	<div class = 'body'>
+		<sep-scroll>
+			<div type="template" name="user-center">
+				<div class="top">
+					<div class="layout" v-if = 'null == user'>
+						<ul>
+							<li>
+								<div class="item link-arrow button" push='user.login'>
+									<div class="media">
+										<i class="icon-my"></i>
+									</div>
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l">
+													立即登录
+												</div>
+												<div class="r">
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l">
+
+												</div>
+												<div class="r">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="other">
+										
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="layout" v-else>
+						<ul>
+							<li>
+								<div class="item link-arrow button ev-prevent" v-click = "{method : m_push, args : 'user.info'}">
+									<div class="media">
+										<img :src = 'user.portraitUrl' v-if='null !== user.portraitUrl'/>
+										<i class="icon-my" v-else></i>
+									</div>
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l">
+													{{user.nickname}}
+												</div>
+												<div class="r">
+													
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l">
+													<span class = 'number fz-small'>等级 {{user.grade}}</span>
+												</div>
+												<div class = 'r'>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="other">
+										<small class = 'number'>
+											{{user.mobile}}
+										</small>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="layout margin-top-far">
+					<ul>
+						<li class="tools-more">
+							<div v-click = "{method: m_push, args : 'order.list'}" class="item button link-arrow" >
+								<div class="media">
+									<i class="icon-form">
+									</i>
+								</div>
+								<div class="content">
+									全部订单
+								</div>
+								<div class="other fg-gray fz-medium">
+									查看全部订单
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="tools splitline">
+					<ul>
+						<li>
+						<!-- m_push('order.list?status=1') -->
+							<a class="button" v-click="{method : m_push, args : 'order.list?status=1'}">
+								<i class="icon-pay">
+								
+								</i>
+								<small>
+									待付款
+								</small>
+							</a>
+						</li>
+						<li>
+							<a class="button" v-click="{method :m_push,args : 'order.list?status=2'}">
+								<i class="icon-send">
+									
+								</i>
+								<small>
+									待发货
+								</small>
+							</a>
+						</li>
+						<li>
+						<!-- m_push('') -->
+							<a class="button" v-click="{method : m_push, args : 'order.list?status=3'}">
+								<i class="icon-deliver">
+									
+								</i>
+								<small>
+									待收货
+								</small>
+							</a>
+						</li>
+						<li>
+							<a class="button" v-click="{method : m_push, args : 'order.list?status=4'}">
+								<i class="icon-post">
+									
+								</i>
+								<small>
+									售后处理
+								</small>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="layout margin-top-far func">
+					<ul>
+						<li>
+						<!-- m_push('user.money') -->
+							<div v-click="{method : m_push, args : 'user.balance'}" class="item button link-arrow">
+								<div class="media">
+									<i class="icon-yue">
+									</i>
+								</div>
+								<div class="content">
+									账户余额
+								</div>
+								<div class="other fg-gray">
+									<span class = 'fg-red number' v-if = 'null != user'>
+										{{user.balance}}
+									</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div v-click="m_set" class="item button link-arrow">
+								<div class="media">
+									<i class="icon-commission">
+									</i>
+								</div>
+								<div class="content">
+									推荐与提成奖励
+								</div>
+								<div class="other fg-gray">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item button link-arrow" v-click="{method : m_push, args : 'card.list'}">
+								<div class="media">
+									<i class="icon-yinhangqia">
+									</i>
+								</div>
+								<div class="content" >
+									我的银行卡
+								</div>
+								<div class="other fg-gray">
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item button link-arrow" v-click="{method : m_push, args : 'help.edit'}">
+								<div class="media">
+									<i class="icon-question">
+									</i>
+								</div>
+								<div class="content">
+									帮助中心
+								</div>
+								<div class="other fg-gray">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item button link-arrow" push = 'agentlist'>
+								<div class="media">
+									<i class="icon-friendfill">
+									</i>
+								</div>
+								<div class="content">
+									联系经纪人
+								</div>
+								<div class="other fg-gray">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item button link-arrow" slideup = 'share'>
+								<div class="media">
+									<i class="icon-share-dotfill">
+									</i>
+								</div>
+								<div class="content">
+									向朋友推荐古美术商城
+								</div>
+								<div class="other fg-gray">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item button link-arrow" v-click="{method : m_push, args : 'user.settings'}">
+								<div class="media">
+									<i class="icon-settings">
+									</i>
+								</div>
+								<div class="content">
+									设置
+								</div>
+								<div class="other fg-gray">
+									
+								</div>
+							</div>
+						</li>
+						<li>
+							
+							<div class="item button link-arrow"  v-if = '2 == memberType' v-click="{method : m_push, args : 'fraction.detail'}">
+								<div class="media">
+									<i class="icon-settings"></i>
+								</div>
+								<div class="content">
+									专家评分
+								</div>
+								<div class="other fg-gray">
+									
+								</div>
+							</div>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+			<section slot="bottom">
+				<sep-dev>
+				</sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+	
+</div>

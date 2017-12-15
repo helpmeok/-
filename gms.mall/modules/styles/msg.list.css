@@ -1,0 +1,8 @@
+.msg-list .header {
+    border-bottom: 1px solid #ccc;
+}
+
+
+.msg-list .layout > ul > li .item .media.large img{
+    border-radius: 100% ;
+}

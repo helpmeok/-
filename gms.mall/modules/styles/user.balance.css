@@ -1,0 +1,41 @@
+.user-balance .heads {
+    height: 180px;
+    background-color: #FF0E0D;
+}
+.user-balance .heads p:nth-child(1) {
+    padding-top: 30px;
+}
+.user-balance .heads p:nth-child(2) {
+    margin-top: 20px;
+    font-size: 40px;
+}
+.user-balance .operation {
+    margin-top: -1.25rem;
+    margin-bottom: 1rem;
+}
+.user-balance .operation a {
+    display: inline-block;
+    width: 40%;
+    height: 2.5rem;
+    margin-left: 6%;
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 2.5rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.user-balance .message {
+    height: 30px;
+    padding: 0 10px;
+}
+.user-balance .message i, .user-balance .message span {
+    float: left;
+}
+.user-balance .message i {
+    font-size: 1.5rem;
+}
+.user-balance .message span {
+    font-size: 0.8rem;
+    margin: 5px 0 0 10px;
+}

@@ -1,0 +1,73 @@
+<form class = "viewbox" v-form = 'form'>
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <!--
+                列表页
+            -->
+            <div class = 'regbox'>
+                <div class = 'wrap'>
+                    <div class="layout">
+                        <ul>
+                            <li>
+                                <div class="item field ">
+                                    <div class="content db">
+                                        <i class = 'icon-mobile'></i>
+                                        <div class="edit">
+                                            <input v-model = 'form.model.mobile' v-rules = '{required : true, tel: true}' data-required-msg = '请输入手机号' data-tel-msg = '手机号格式无效' maxlength="11" type="tel" placeholder="请输入手机号" class="mobile">
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item field">
+                                    <div class="content db">
+                                        <i class = 'icon-security'></i>
+                                        <div class="edit">
+                                            <input type="text" v-rules = '{required : true }' data-tel-msg = '计算结果错误' data-required-msg = '请输入计算结果' v-model = 'form.model.code' placeholder="请输入计算结果" class="imgcode">
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                        <div class="but"><img :src = 'src' alt="" v-click = 'm_img_code'/></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--<li hidden="hidden">
+                                <div class="item field">
+                                    <div class="content db">
+                                        <i class = 'icon-security'></i>
+                                        <div class="edit">
+                                            <input type="text" v-model = 'form.model.memberId' placeholder="请输入计算结果" class="imgcode" value="55860">
+                                        </div>
+                                    </div>
+                                    <div class="other">
+                                        <div class="but"><img :src = 'src' alt="" v-click = 'm_img_code'/></div>
+                                    </div>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </div>
+                    <sep-button :class = '{disable : 0 == form.status}' v-click = 'form.m_submit' class = 'red submit' text = '继续' wtext = '继续'></sep-button>
+                </div>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+        
+    </div>
+    
+</form>

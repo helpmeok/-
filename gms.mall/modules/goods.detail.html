@@ -1,0 +1,251 @@
+<div class="viewbox">
+	<div class="header">
+		<div class="wrap">
+			<div class="l">
+				<!--<a onclick="history.go(-2);"  class="button"><i class="icon-back"></i></a>-->
+				
+				<a  back class="button"><i class="icon-back"></i></a>
+			</div>
+			<div class="c">
+				<em>{{title}}</em>
+			</div>
+			<div class="r">
+			</div>
+		</div>
+	</div>
+	<div class='body'>
+		<sep-scroll>
+			<sep-render :login='false'>
+				<section slot='entity'>
+					<div class='images'>
+						<sep-swiper :autoplay="3000" :pagination="true">
+							<div v-for='el in $model.collectionPic' v-click='m_photo_browse' class="swiper-slide">
+								<img :data-src="el.url" class="swiper-lazy" width="100%" height="254" />
+								<div class="swiper-lazy-preloader"></div>
+							</div>
+							<div v-if='$model.collectionPic && 0 == $model.collectionPic.length' class="swiper-slide placeholder">
+								<i class='icon-pic'></i>
+								<p>暂无细节图</p>
+							</div>
+						</sep-swiper>
+					</div>
+					<div class="layout">
+						<ul>
+							<li v-for='item in $model.message'>
+								<div class="button item topalign">
+									<div class="content">
+										<div class="props">
+											<div class="prop">
+												<div class="l doubleline">
+													{{item.goodsName}}
+												</div>
+												<div class="r">
+													<div class="share button text-align-center" slideup='share'>
+														<i class="icon-share-dotfill"></i>
+														<p class='fz-small fg-gray'>分享</p>
+													</div>
+												</div>
+											</div>
+											<div class="prop">
+												<div class="l number">
+													<strong class='price fg-red'><small>￥</small>{{item.sellingPrice}}</strong>
+													<a :href="'tel:'+list.mobile" style="color: red;float: right;font-size: 15x;position: relative;top: 5px;;">联系专属经纪人</a>
+												</div>
+												<div class="r">
+													<!-- <div class = 'score' >古美分：{{item.scoring}} 分</div> -->
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="other">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class='privilege'>
+						<div class='wrap flexbox centeralign'>
+							<small class='primary'>
+                                <i class = 'icon-roundcheck'></i> 15天无理由退货
+                            </small>
+							<small class='primary'>
+                                <i class = 'icon-roundcheck'></i> 专家三轮把关
+                            </small>
+							<small class='primary'>
+                                <i class = 'icon-roundcheck'></i> 赠送精美礼品
+                            </small>
+						</div>
+					</div>
+					<div class='tab red margin-top-far'>
+						<div class='wrap'>
+							<div class='button'>
+								<input type='radio' name='radio' v-model='tab_index' value='0' />
+								<div class='item'>
+									<small>
+                                        商品详情
+                                    </small>
+								</div>
+							</div>
+							<div class='button'>
+								<input type='radio' name='radio' v-model='tab_index' value='1' />
+								<div class='item'>
+									<small>
+                                        评论<b class = 'number'></b>
+                                    </small>
+								</div>
+							</div>
+							<div class='button'>
+								<input type='radio' name='radio' v-model='tab_index' value='2' />
+								<div class='item'>
+									<small>
+                                        服务说明
+                                    </small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<section class='detail' v-if='0 == tab_index' v-for='el in $model.message'>
+						<table width="100%" height="240" border="1">
+							<tr>
+								<td valign="middle" width='100px'>品相</td>
+								<td valign="middle"><b>{{el.grade}}</b></td>
+								<td colspan="2" align="center" valign="middle">材质</td>
+								<td valign="middle"><b>{{el.material=='0'?'&frasl;':el.material}}</b></td>
+							</tr>
+							<tr>
+								<td valign="middle" width='100px'>年份</td>
+								<td valign="middle"><b>{{el.years}}</b></td>
+								<td colspan="2" align="center" valign="middle">工艺</td>
+								<td valign="middle"><b>{{el.crafts=='0'?'&frasl;':el.crafts}}</b></td>
+							</tr>
+							<tr>
+								<td valign="middle" width='100px'>器型</td>
+								<td valign="middle"><b>{{el.shape=='0'?'&frasl;':el.shape}}</b></td>
+								<td colspan="2" align="center" valign="middle">款识</td>
+								<td valign="middle"><b>{{el.style=='0'?'&frasl;':el.style}}</b></td>
+							</tr>
+							<tr>
+								<td rowspan="2" valign="middle" width='100px'>藏品尺寸</td>
+								<td valign="middle">高 (cm)</td>
+								<td valign="middle">长 (cm)</td>
+								<td valign="middle">宽 (cm)</td>
+								<td valign="middle">重 ({{el.unit}})</td>
+							</tr>
+							<tr>
+								<td align="center" valign="middle"><b>{{el.height=='0'?'&frasl;':el.height}}</b></td>
+								<td valign="middle"><b>{{el.length=='0'?'&frasl;':el.length}}</b></td>
+								<td valign="middle"><b>{{el.width=='0'?'&frasl;':el.width}}</b></td>
+								<td valign="middle"><b>{{el.weight=='0'?'&frasl;':el.weight}}</b></td>
+							</tr>
+							<tr>
+								<td valign="middle" width='100px'>其它尺寸</td>
+								<td colspan="4" valign="middle"><b>{{!!el.otherSize?el.otherSize:'&frasl;'}}</b></td>
+							</tr>
+						</table>
+						<p class='desc' v-html='el.description'>
+							<!-- 台湾回流，此套家具以正宗酸枝木制作，用料实在， 木质坚硬，肉质饱满，纹理细致，色质淳厚含蓄，在 视觉上呈现一种赏心悦目的暖色调，让人倍感亲切。 整体呈方形，搭脑中间下凹为搭脑，两端下弯不出 头。背板攒框镶独板云石，成圆形，纹理绚丽漂亮， 搭配完美。靠背板两侧亦镂雕喜上眉梢纹，两侧扶手 下方饰以花卉纹，纹饰勾转，富有装饰性。坐面攒框 嵌大料独板云石，束腰，正面牙条处作梅花纹饰，四 方直腿间以横杖相连，底为兽足。搭配同一材质茶 几，题材与太师椅一致。整组拍品均精工嵌螺钿作花 草纹饰，螺钿光晕自然，纹饰精美。此套太师椅用材 贵重，工艺考究，体态宽大，庄重大气，线条轮廓转 折流畅生动，颇为富丽华贵，两椅一几，成套美品， 高端会所必备美品，欢迎竞拍！ -->
+						</p>
+					</section>
+					<section class='comment' v-if='1 == tab_index'>
+						<div class='login' v-if='null != user'>
+							<div class="layout" v-if="null != discuss_list && 0 != discuss_list.length">
+								<ul>
+									<li v-for='el in discuss_list'>
+										<div class="item topalign">
+											<div class="media medium border-radius-100per">
+												<img :src='el.memberImages'>
+											</div>
+											<div class="content">
+												<div class="props">
+													<div class="prop">
+														<div class="l fg-gray">
+															{{el.memberName}}<small class='tel'>13625**7690</small>
+														</div>
+														<div class="r">
+															<small class='number fz-medium fg-gray'>{{el.discussDate}}</small>
+														</div>
+													</div>
+													<div class="prop">
+														<div class="l fz-medium">
+															{{el.content}}
+														</div>
+														<div class="r">
+														</div>
+													</div>
+													<div class="prop reply">
+														<div class='flexbox centeralign'>
+															<div class='l'>
+																<span class='nickname'>客服：<small>回复</small></span>
+																<small class='content'>{{el.reply}}</small>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="other">
+											</div>
+										</div>
+										<div class="bottom">
+											<div class="l">
+											</div>
+											<div class="r">
+												<a class=" button cool mini medium" :class="[el.hasZan ? 'icon-zanfill' : 'icon-zan']" v-click='{method : m_toggle_zan, args : el}'></a>
+											</div>
+										</div>
+									</li>
+								</ul>
+								<div class="pageinfo">
+									<div class='wrap flexbox'>
+										<a class="primary button" v-click='m_load_comment_prev_page'>
+											上一页
+										</a>
+										<a class="primary button" v-click='m_load_commrnt_next_page'>
+											下一页
+										</a>
+									</div>
+								</div>
+							</div>
+							<sep-empty v-else text='暂时没有评论' icon="icon-favor">
+								快去抢第一条评论吧～
+							</sep-empty>
+							<a class="button add-comment" v-click='m_add_comment'>
+								<i class='icon-write'></i> 我来评论
+							</a>
+						</div>
+						<sep-sessionless v-else>
+
+						</sep-sessionless>
+					</section>
+					<section class='service' v-if='2 == tab_index'>
+						<p class='desc'>
+							{{$model.explain}}
+						</p>
+					</section>
+
+				</section>
+			</sep-render>
+			<section slot="bottom">
+				<sep-dev></sep-dev>
+			</section>
+		</sep-scroll>
+	</div>
+	<div class='footer'>
+		<div class='wrap flexbox centeralign'>
+			<!-- <div class='l primary'>
+                <div class='flexbox'>
+                    <a class='button primary' v-click = 'm_call'>
+                        <i class = 'icon-lianxikefu'>
+                        </i>
+                        <small>咨询</small>
+                    </a>
+                </div>
+            </div> -->
+			<div class='r primary'>
+				<div class='flexbox'>
+					<a class='button joincart primary' v-click='m_joincart'>加入购物车</a>
+					<a class='button submit primary' v-click="m_buy">立即购买</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

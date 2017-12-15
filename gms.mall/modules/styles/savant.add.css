@@ -1,0 +1,32 @@
+.savant-add .submit {
+    margin: 10px 40px 20px 40px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    background-color: #FF0E0D;
+}
+.savant-add .submit.disable {
+    background-color: transparent;
+    border: 1px solid #D3D3D3;
+}
+
+.savant-add .layout > ul > li .item .op{
+    text-align: center;
+    width: 100%;
+    color: #aaa;
+    font-size: 18px;
+}
+.savant-add .button.radio small {
+    padding: 10px;
+    border-radius: 100%;
+    border: 1px solid #aaa;
+    margin-left: 0;
+}
+.savant-add .button.radio input[type=radio]:checked ~ small {
+    padding: 10px;
+    border-radius: 100%;
+    border: 1px solid #FF0E0D;
+}.savant-add .theme-base .button.radio input[type=radio]:checked ~ small {
+    padding: 10px;
+    border-radius: 100%;
+    border: 1px solid #FF0E0D;
+}

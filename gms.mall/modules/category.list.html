@@ -1,0 +1,54 @@
+<div class = "viewbox">
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        
+          <div class = 'panel'>
+            <div class = 'wrap'>
+                <div class = 'l'>
+                    <sep-scroll :downpull_lock = 'true'>
+                        <ul>
+                            <li class = 'button' v-for = '(el, pos) in list'>
+                                <input type = 'radio' name = 'cateogry-list-radio'  @change = 'm_load_items_from_index(pos)' :checked = 'index == pos'  />
+                                <div class = 'item'>
+                                    <small>{{el.classifyName}}</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </sep-scroll>
+                </div>
+                <div class = 'r'>
+                    <sep-scroll :downpull_lock = 'true'>
+                        <div class = 'list' v-if = 'items && items.length'>
+                            <div class = 'wrap'>
+                                <ul>
+                                    <li v-for = 'el in items'>
+                                        <div class="button" v-click = "{method : m_push, args : el}">
+
+                                            <small>{{el.classifyName}}</small>
+
+                                            <img v-lazyload = 'el.classifyPic' />
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <sep-empty v-else></sep-empty>
+                    </sep-scroll>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

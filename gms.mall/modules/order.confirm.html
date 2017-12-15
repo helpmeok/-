@@ -1,0 +1,364 @@
+<form class="viewbox" v-form='form'>
+    <div class = "header">
+        <div class = "wrap">
+            <div class = "l">
+                 <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class = "c">
+                <em>{{title}}</em>
+            </div>
+            <div class = "r">
+                
+            </div>
+        </div>
+    </div>
+    <div class = 'body'>
+        <sep-scroll>
+            <!-- <span class = 'coutdown' v-if = '1 == from'>倒计时</span> -->
+            <input type = 'hidden' v-model = 'form.model.addressId' v-rules = '{required : true}' data-required-msg = '请选择收货地址' />
+            <section v-if = '1 == form.model.sendType'>
+                <div class="layout" v-if = 'address'>
+                    <ul>
+                        <li>
+                            <!-- link(可链接) link-arrow(带箭头链接) -->
+                            <div class="item link" :class = "{'link-arrow' : 0 == from, button : 0 == from}" v-click = 'm_address_choose'>
+                                <div class = 'media'>
+                                    <i class = 'fg-red icon-locationfill'></i>
+                                </div>
+                                <div class="content">
+                                    <div class="props">
+                                        <div class="prop">
+                                            <div class="l">
+                                                <span>{{address.addressee}} <b>({{address.mobile}})</b></span>
+                                            </div>
+                                            <div class="r">
+                                                <span>
+                                                
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="prop">
+                                            <div class="l">
+                                                <span class="fg-gray fz-small">
+                                                    {{address.addressDetail}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="layout" v-else>
+                    <ul>
+                        <li>
+                            <!-- link(可链接) link-arrow(带箭头链接) -->
+                            <div class="item link button link-arrow" push = 'address.list?source=order.confirm'>
+                                <div class = 'media'>
+                                    <i class = 'fg-red icon-locationfill'></i>
+                                </div>
+                                <div class="content">
+                                    <div class="props">
+                                        <div class="prop">
+                                            <div class="l">
+                                                请选择收货地址
+                                            </div>
+                                            <div class="r">
+                                                <span>
+                                                
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="prop">
+                                            <div class="l">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section v-if = '2 == form.model.sendType'>
+                <div class="layout">
+                    <ul>
+                        <li>
+                            <!-- link(可链接) link-arrow(带箭头链接) -->
+                            <div class="item link">
+                                <div class = 'media'>
+                                    <i class = 'icon-locationfill fg-red'></i>
+                                </div>
+                                <div class="content">
+                                    <div class="props">
+                                        <div class="prop">
+                                            <div class="l">
+                                                古美术集团 <strong>(4008386268)</strong>
+                                            </div>
+                                            <div class="r">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="prop">
+                                            <div class="l">
+                                                <span class="fg-gray fz-small">
+                                                    福建省 厦门市 湖里区 禾山街道 五缘湾文化展览苑A区 10栋厦门古美术
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <div class="layout margin-top-far">
+                <ul>
+                    <li>
+                        <div class="button item">
+                            <div class="content">
+                                配送方式
+                            </div>
+                            <div class="other">
+                                
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class='layout'>
+                <ul>
+                    <li>
+                        <div class='item field'>
+                            <div class='content'>
+                                <div class='edit'>
+                                    <sep-radios  v-model = 'form.model.sendType'>
+                                        <div class='button'>
+                                            <input value='1' />
+                                            <i>
+                                            </i>
+                                            <small class = 'fg-gray'>
+                                                快递(运费 {{goods_freight}}元)
+                                            </small>
+                                        </div>
+                                        <div class='button'>
+                                            <input value='2'>
+                                            <i>
+                                            </i>
+                                            <small class = 'fg-gray'>
+                                                上门自提
+                                            </small>
+                                        </div>
+                                    </sep-radios>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout margin-top-far">
+                <ul>
+                    <li>
+                        <div class="button item">
+                            <div class="content">
+                                支付方式
+                            </div>
+                            <div class="other">
+                                
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class='layout'>
+                <ul>
+                    <li>
+                        <div class='item field'>
+                            <div class='content'>
+                                <div class='edit'>
+                                    <sep-radios v-model = 'payType'>
+                                        <div class='button'>
+                                            <input value='4' />
+                                            <i>
+                                            </i>
+                                            <small class = 'fg-gray'>
+                                                余额支付
+                                            </small>
+                                        </div>
+                                        <!-- <div class='button'>
+                                            <input value='1'>
+                                            <i>
+                                            </i>
+                                            <small class = 'fg-gray'>
+                                                微信支付
+                                            </small>
+                                        </div>
+                                        <div class='button'>
+                                            <input value='2'>
+                                            <i>
+                                            </i>
+                                            <small class = 'fg-gray'>
+                                                支付宝支付
+                                            </small>
+                                        </div> -->
+                                        <div class='button'>
+                                            <input value='3'>
+                                            <i>
+                                            </i>
+                                            <small class = 'fg-gray'>
+                                                银联贷记卡
+                                            </small>
+                                        </div>
+                                        <div class='button'>
+                                            <input value='5'>
+                                            <i>
+                                            </i>
+                                            <small class = 'fg-gray'>
+                                                银联储蓄卡
+                                            </small>
+                                        </div>
+                                    </sep-radios>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout margin-top-far">
+                <ul>
+                    <li v-for = 'el in goods_detail'>
+                        <div class="button item topalign">
+                            <div class="media large">
+                                <img :src="el.goodsImages">
+                            </div>
+                            <div class="content">
+                                <div class="props">
+                                    <div class="prop">
+                                        <div class="l doubleline">
+                                            {{el.goodsName}}
+                                        </div>
+                                        <div class="r">
+                                            <span class = 'number fg-red'>{{el.goodsPrice}}元</span>
+                                        </div>
+                                    </div>
+                                    <div class="prop" v-if = 'null != el.num'>
+                                        <div class="l number">
+                                            ×{{el.num}}
+                                        </div>
+                                    </div>
+                                    <div class="prop" v-else>
+                                        <div class="l number">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="other">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="layout margin-top-far">
+                <ul>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                    开具发票
+                                </em>
+                                <div class="edit">
+                                    
+                                </div>
+                            </div>
+                            <div class="other">
+                                <div class="button switch">
+                                    <input type="checkbox" name="switch" v-model = 'form.model.setInvoice'>
+                                    <i>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li v-if = 'form.model.setInvoice'>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name fg-gray">
+                                    发票抬头
+                                </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入发票名称" v-rules = '{required : true}' data-required-msg = '请输入发票名称' v-model = 'form.model.invoiceTitle'>
+                                </div>
+                            </div>
+                            <div class="other">
+                                
+                            </div>
+                        </div>
+                    </li>
+                    <li v-if = 'form.model.setInvoice'>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name fg-gray">
+                                    税号
+                                </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入税号" v-model = 'form.model.ein' v-rules = '{required : true}' data-required-msg = '请输入税号'>
+                                </div>
+                            </div>
+                            <div class="other">
+                                
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>    
+            <div class="layout">
+                <ul>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                    备注
+                                </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="选填" v-model = 'form.model.remark'>
+                                </div>
+                            </div>
+                            <div class="other">
+                               
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <section slot = "bottom">
+                <sep-dev></sep-dev>
+            </section>
+        </sep-scroll>
+    </div>
+    <div class = 'footer'>
+        <div class = 'wrap flexbox centeralign'>
+            <div class = 'l'>
+                <div class = 'flexbox centeralign'>
+                    <span class = 'info margin-right-far'>
+                        <p>
+                            <small class = 'fg-black fz-small'>合计:</small>
+                            <strong class = 'price fg-red fz-20px'>
+                                <small>￥</small>{{2 == form.model.sendType ? total : total_freight}}
+                            </strong>
+                        </p>
+                    </span>
+                </div>
+            </div>
+            <div class = 'r' v-if = '1 == from'>
+                <a class = 'primary button submit' v-click = 'm_payment'>去支付</a>
+            </div>
+            <div class = 'r' v-else>
+                <a class = 'primary button submit' v-click = 'form.m_submit'>提交订单</a>
+            </div>
+        </div>
+    </div>
+</form>

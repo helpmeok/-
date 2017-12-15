@@ -1,0 +1,67 @@
+
+.search .body {
+    background-color: #fff;
+}
+.search .flexbox .l {
+    margin-left: 20px;
+}
+.search .primary input {
+    width: 75%; 
+    padding-left: 20%;
+    height: 36px;
+    border: 1px solid #222222;
+    border-radius: 1rem;
+}
+.search select {
+    position: relative;
+    top: 10px;
+    left: 150%;
+    border: none;
+}
+.search .ensure {
+    font-size: 14px;
+    margin: 0.5rem 20px 0 0;
+}
+.search .hot {
+    padding: 0 5%;
+}
+.search .hot p {
+    color: #666666;
+}
+.search .hot li {
+    float: left;
+    margin: 0.8rem 0 0 5%;
+}
+.search .hot li a {
+    width: 51px;
+    height: 25px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 25px;
+    color: #666666;
+    background-color: #F6F6F6;
+    border-radius: 0.5rem;
+}
+.search .pageinfo {
+    background-color: #eee;
+    margin-top: 10px;
+}
+.search .pageinfo .wrap {
+    text-align: center;
+}
+.search .pageinfo .button {
+    padding: 10px 15px;
+    background-color: #fff;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+}
+.search .pageinfo .button:first-child:after {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    bottom: 5px;
+    content: '';
+    border-left: 1px solid #eee;
+}

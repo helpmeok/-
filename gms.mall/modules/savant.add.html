@@ -1,0 +1,234 @@
+<form class="viewbox" v-form='form'>
+    <div class="header">
+        <div class="wrap">
+            <div class="l">
+                <a back class="button"><i class = "icon-back"></i></a>
+            </div>
+            <div class="c">
+                <em>{{title}}</em>
+            </div>
+            <div class="r">
+            </div>
+        </div>
+    </div>
+    
+    <div class='body'>
+        <sep-scroll>
+            <div class="layout">
+                <ul>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   姓名
+                               </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入您的姓名" v-model='model.professorName' v-rules = '{required : true}'>
+                                </div>
+                            </div>
+                            <div class="other">
+                                <div class='item field'>
+                                    <div class='content'>
+                                        <div class='edit'>
+                                            <sep-radios v-model='model.sexType' v-rules = '{required : true}'>
+                                                <div class='button'>
+                                                    <input value='1' />
+                                                    <!-- <i></i> -->
+                                                    <small>
+                                                      男
+                                                  </small>
+                                                </div>
+                                                <div class='button'>
+                                                    <input value='2'>
+                                                    <!-- <i></i> -->
+                                                    <small>
+                                                      女
+                                                  </small>
+                                                </div>
+                                            </sep-radios>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   出生日期
+                               </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入您的出生日期" v-model='model.birthday' v-rules = '{required : true}'>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   职业
+                               </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入您的职业" v-model='model.job' v-rules = '{required : true}'>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   联系电话
+                               </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入您的联系电话" v-model='model.mobile' v-rules = '{required : true}'>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   银行卡
+                               </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入您的银行卡" v-model='model.bankCardNo' v-rules = '{required : true}'>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   身份证号码
+                               </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入您的身份证号码" v-model='model.idcnNo' v-rules = '{required : true}'>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   详细地址
+                               </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入您的详细地址" v-model='model.address' v-rules = '{required : true}'>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   擅长品类
+                               </em>
+                                <div class="edit">
+                                    <input type="text" placeholder="请输入您的擅长品类" v-model='model.marjor' v-rules = '{required : true}'>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   鉴定证书
+                                   <small class="fg-red ">(可选填)</small>
+                               </em>
+                                <div class="edit">
+                                    <div class="files">
+                                        <div class="wrap">
+                                            <ul>
+                                                <li>
+                                                    <div class="item button">
+                                                        <p class="op" v-if='null === model.certificate'>照片</p>
+                                                        <img :src="model.certificate" width="100%" height="100%" v-else>
+                                                        <sep-file v-model='model.certificate'></sep-file>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item field">
+                            <div class="content">
+                                <em class="name">
+                                   身份证照片
+                               </em>
+                                <div class="edit">
+                                    <div class="files">
+                                        <div class="wrap">
+                                            <ul>
+                                                <li>
+                                                    <div class="item button">
+                                                        <p class="op" v-if='null === model.idcnPicFront'>正面</p>
+                                                        <img :src="model.idcnPicFront" width="100%" height="100%" v-else>
+                                                        <sep-file v-model='model.idcnPicFront'></sep-file>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item button">
+                                                        <p class="op" v-if='null === model.idcnPicBack'>反面</p>
+                                                        <img :src="model.idcnPicBack" width="100%" height="100%" v-else>
+                                                        <sep-file v-model='model.idcnPicBack'></sep-file>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="other"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='layout'>
+                            <ul>
+                                <li>
+                                    <div class='item field'>
+                                        <div class='content'>
+                                            <div class='edit'>
+                                                <div class="checkbox button">
+                                                    <input type="checkbox"  v-model='model.checked' >
+                                                    <i>
+                                                    </i>
+                                                    <small>
+                                                        我同意
+                                                    </small>
+                                                </div>
+                                                <a class='fg-red' v-click='m_look'>
+                                                    《古美术专家在线协议》
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <sep-button :class='{disable : 0 == form.status}' v-click='form.m_submit' class='red submit' text='提交' wtext='提交' ></sep-button>
+            </div>
+        </sep-scroll>
+    </div>
+</form>

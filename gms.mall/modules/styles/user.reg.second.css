@@ -1,0 +1,113 @@
+.user-reg-second .body {
+	background-color: #fff;
+}
+.user-reg-second .top {
+	text-align: center;
+}
+.user-reg-second .top .logo {
+	margin-top: 5%;
+	vertical-align: middle;
+}
+.user-reg-second .regbox {
+	text-align: center;
+}
+
+.user-reg-second .regbox .layout {
+	margin-top: 20px;
+}
+.user-reg-second .regbox .layout .item {
+	margin: 10px 20px 20px 20px;
+}
+.user-reg-second .regbox .layout .db{
+	border-radius: 30px;
+	border: 1px solid #D3D3D3;
+	padding: 0 20px;
+}
+
+.user-reg-second .regbox .layout .content {
+}
+.user-reg-second .regbox .layout .content i {
+	display: inline-block;
+	text-align: center;
+	font-size: 18px;
+	margin-right: 10px;
+}
+
+.user-reg-second .regbox .layout > ul:before {
+	display: none;
+}
+.user-reg-second .regbox .layout > ul > li .item:before {
+	display: none;
+}
+
+.user-reg-second .regbox .submit {
+	margin: 10px 40px 20px 40px;
+	border-radius: 30px;
+	border: 1px solid transparent;
+	background-color: #FF0E0D;
+}
+.user-reg-second .regbox .submit.disable {
+	background-color: transparent;
+	border: 1px solid #D3D3D3;
+}
+
+.user-reg-second .button.req-code.disable {
+	background-color:#eee;
+	color:#999;
+}
+
+.user-reg-second .layout>ul>li .item .other .but{
+    width: 92px;
+    height: 32px;
+    box-shadow: 0px 0px 2px #ccc;
+    display: block;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+.user-reg-second .two{
+	margin-bottom: 40px;
+}
+.user-reg-second .two p{
+    font-size: 18px;
+    color: #BBB ;
+    line-height: 30px;
+}
+.user-reg-second .two p.pp{
+    font-size: 20px;
+    color: #000 ;
+}
+.user-reg-second .two .messagebox{
+	position: relative;
+}
+.user-reg-second .two .messagebox .msgcode{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 52px;
+	opacity: .4;
+	filter: alpha(opacity=.4);
+	border: 0;
+	color: #fff;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	-webkit-user-select: initial;
+}
+.user-reg-second .two .messagebox .six{
+    margin: 8px 20px;
+}
+
+.user-reg-second .two .messagebox .six .bb{
+    display: inline-block;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #999; 
+    margin: 8px;
+    height: 40px;
+    line-height: 40px;
+}
+.user-reg-second .two .messagebox .six .bb.active{
+    box-shadow: 0 0 3px 1px #999;
+}
